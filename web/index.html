@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⭐ Familia Rodríguez</title>
+<meta name="application-name" content="Familia Rodríguez"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="apple-mobile-web-app-title" content="Familia Rodríguez"/>
+<meta name="theme-color" content="#667eea"/>
+<link rel="manifest" href="manifest.json"/>
+<link rel="apple-touch-icon" href="icons/icon-192.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --lc:#4A90E2;--ll:#E8F4FD;--ld:#2C5F8A;
+  --cc:#E85D9A;--cl:#FDE8F3;--cd:#9A2B63;
+  --gold:#FFD700;--gd:#E5BC00;--green:#52C97B;--red:#FF6B6B;--ora:#FF9F43;--pur:#A855F7;
+  --bg:#FFF9F0;--card:#fff;--txt:#2D2D2D;--mut:#888;
+  --rad:20px;--sh:0 8px 30px rgba(0,0,0,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;color:var(--txt);overflow-x:hidden;}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#667eea,#f093fb);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 20px rgba(102,126,234,.4);position:sticky;top:0;z-index:100;}
+.hdr-logo{font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:800;color:white;}
+.hdr-r{text-align:right;color:white;font-size:.75rem;font-weight:700;}
+.hdr-day{font-size:.88rem;font-weight:800;}
+
+/* PAGES */
+.page{display:none;padding:14px 14px 110px;max-width:600px;margin:0 auto;}
+.page.active{display:block;}
+
+/* CHILD SELECTOR */
+.cs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.cc{background:var(--card);border-radius:var(--rad);padding:13px 10px;text-align:center;cursor:pointer;box-shadow:var(--sh);border:3px solid transparent;transition:all .2s;}
+.cc.liam.sel{border-color:var(--lc);background:var(--ll);}
+.cc.consta.sel{border-color:var(--cc);background:var(--cl);}
+.cc:active{transform:scale(.97);}
+.cc-av{font-size:2.6rem;margin-bottom:3px;}
+.cc-nm{font-family:'Baloo 2',cursive;font-weight:800;font-size:.92rem;}
+.cc-age{font-size:.7rem;color:var(--mut);font-weight:600;}
+.cc-pts{font-size:1.1rem;font-weight:800;margin-top:3px;}
+.liam .cc-pts{color:var(--lc);}.consta .cc-pts{color:var(--cc);}
+
+.st{font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;margin:14px 0 8px;display:flex;align-items:center;gap:6px;}
+.card{background:var(--card);border-radius:var(--rad);padding:15px;box-shadow:var(--sh);margin-bottom:10px;}
+
+/* WEEK */
+.wg{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-bottom:12px;}
+.dp{background:var(--card);border-radius:10px;padding:6px 2px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.07);border:2px solid transparent;}
+.dp.today{border-color:var(--pur);background:#f3e8ff;}
+.dp.done{background:#f0fdf4;border-color:var(--green);}
+.dn{font-size:.58rem;font-weight:800;text-transform:uppercase;color:var(--mut);}
+.dv{font-weight:800;font-size:.9rem;}
+
+/* POINTS BAR */
+.pb{background:var(--card);border-radius:var(--rad);padding:13px;box-shadow:var(--sh);margin-bottom:14px;display:flex;align-items:center;justify-content:space-around;}
+.pg{text-align:center;}
+.pv{font-family:'Baloo 2',cursive;font-size:1.9rem;font-weight:800;line-height:1;}
+.pl{font-size:.7rem;color:var(--mut);font-weight:700;}
+.pe{color:var(--green);}.pm{color:var(--red);}.pn{color:var(--pur);}
+
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:11px;}
+.sc{background:var(--card);border-radius:14px;padding:12px;box-shadow:0 3px 12px rgba(0,0,0,.07);text-align:center;}
+.sv{font-family:'Baloo 2',cursive;font-size:1.6rem;font-weight:800;}
+.sl{font-size:.68rem;color:var(--mut);font-weight:700;}
+
+.abtn{width:100%;padding:14px;background:linear-gradient(135deg,#667eea,#f093fb);color:white;font-family:'Baloo 2',cursive;font-weight:800;font-size:1rem;border:none;border-radius:var(--rad);cursor:pointer;box-shadow:0 8px 24px rgba(102,126,234,.35);transition:all .2s;margin-top:12px;-webkit-tap-highlight-color:transparent;}
+.abtn:active{transform:scale(.97);}.abtn:disabled{background:#ddd;color:#aaa;cursor:not-allowed;box-shadow:none;}
+
+/* DUTIES */
+.dl{display:flex;flex-direction:column;gap:8px;}
+.dc{background:var(--card);border-radius:14px;padding:12px 13px;box-shadow:0 3px 12px rgba(0,0,0,.07);border-left:5px solid #ccc;transition:all .2s;}
+.dc.cat-higiene{border-left-color:#4FC3F7;}.dc.cat-estudio{border-left-color:#A78BFA;}
+.dc.cat-hogar{border-left-color:#6EE7B7;}.dc.cat-habitos{border-left-color:#FCA5A5;}
+.dc.cat-social{border-left-color:#FCD34D;}.dc.cf{background:#f0fff4;}
+.dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.dn2{font-weight:800;font-size:.88rem;}
+.db{font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:20px;color:white;text-transform:uppercase;}
+.bh{background:#4FC3F7}.be{background:#A78BFA}.bo{background:#34D399}.ba{background:#F87171}.bs{background:#FBBF24}
+.dpts{font-size:.7rem;color:var(--mut);margin-bottom:6px;}
+.dpts span{font-weight:700;color:var(--gd);}
+.cbts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+.cb{padding:8px 3px;border:2px solid #eee;border-radius:9px;font-size:.67rem;font-weight:700;cursor:pointer;background:white;text-align:center;transition:all .15s;font-family:'Nunito',sans-serif;display:flex;flex-direction:column;align-items:center;gap:2px;-webkit-tap-highlight-color:transparent;}
+.cb:active{transform:scale(.9);}
+.cb.full{border-color:var(--green);}.cb.full.sel{background:var(--green);color:white;}
+.cb.part{border-color:var(--ora);}.cb.part.sel{background:var(--ora);color:white;}
+.cb.none{border-color:var(--red);}.cb.none.sel{background:var(--red);color:white;}
+
+/* CAT FILTER */
+.cf2{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:9px;}
+.ch{padding:4px 10px;border-radius:20px;border:2px solid #eee;font-size:.67rem;font-weight:700;cursor:pointer;background:white;font-family:'Nunito',sans-serif;}
+.ch.a{color:white;border-color:transparent;}
+.ch.ca.a{background:#7C3AED}.ch.ci.a{background:#4FC3F7}.ch.ce.a{background:#A78BFA}
+.ch.co.a{background:#34D399}.ch.cb2.a{background:#F87171}.ch.cs.a{background:#FBBF24}
+
+/* REWARDS */
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.rc{background:var(--card);border-radius:var(--rad);padding:13px;box-shadow:var(--sh);text-align:center;border:2px solid #f0e6ff;transition:all .2s;position:relative;overflow:hidden;}
+.rc.unl{border-color:var(--gold);background:linear-gradient(135deg,#fffbeb,#fff9f0);}
+.rc.lck{opacity:.6;}
+.re{font-size:2.3rem;margin-bottom:5px;}.rn{font-weight:800;font-size:.84rem;margin-bottom:3px;}
+.rco{font-size:.7rem;color:var(--gd);font-weight:700;}
+.rlk{position:absolute;top:6px;right:6px;font-size:.82rem;}
+.rbtn{margin-top:7px;padding:6px 10px;border-radius:20px;border:none;background:linear-gradient(135deg,#FFD700,#FF9F43);color:white;font-weight:800;font-size:.7rem;cursor:pointer;font-family:'Nunito',sans-serif;}
+.rbtn:disabled{background:#ddd;color:#aaa;cursor:not-allowed;}
+
+/* PET (full screen dedicated) */
+.pet-wrap{background:var(--card);border-radius:var(--rad);padding:22px 16px 18px;box-shadow:var(--sh);margin-bottom:12px;text-align:center;position:relative;overflow:hidden;}
+.pet-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:9rem;opacity:.06;pointer-events:none;user-select:none;}
+.pet-badge{display:inline-block;background:linear-gradient(135deg,#667eea,#f093fb);color:white;border-radius:20px;padding:3px 13px;font-size:.67rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;}
+.pet-bub{position:absolute;top:12px;left:50%;transform:translateX(-50%);background:white;border-radius:14px;padding:7px 14px;box-shadow:0 4px 14px rgba(0,0,0,.14);font-size:.85rem;font-weight:800;white-space:nowrap;opacity:0;pointer-events:none;border:2px solid #f0e6ff;transition:opacity .25s,top .22s;z-index:2;}
+.pet-bub::after{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);border:8px solid transparent;border-top-color:white;border-bottom:none;}
+.pet-bub.show{opacity:1;top:10px;}
+.pet-em{width:180px;height:auto;cursor:pointer;display:inline-block;transition:transform .15s cubic-bezier(.34,1.56,.64,1);margin:6px 0;user-select:none;-webkit-tap-highlight-color:transparent;filter:drop-shadow(0 8px 16px rgba(102,126,234,.3));}
+.pet-em:active{transform:scale(.85) rotate(-8deg)!important;}
+.pet-nm{font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:800;margin-bottom:2px;}
+.pet-md{font-size:.84rem;color:var(--mut);font-weight:600;margin-bottom:14px;}
+.xpbar{background:#f0e6ff;border-radius:20px;height:13px;overflow:hidden;margin:0 6px;}
+.xpfill{height:100%;border-radius:20px;background:linear-gradient(90deg,#52C97B,#FFD700,#FF9F43);transition:width .5s cubic-bezier(.34,1.2,.64,1);}
+.xplbl{font-size:.7rem;color:var(--mut);font-weight:700;margin-top:4px;}
+
+/* PET CHOOSER */
+.pet-chooser{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px;}
+.pet-opt{background:#f8f8f8;border-radius:14px;padding:10px 6px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all .15s;-webkit-tap-highlight-color:transparent;}
+.pet-opt.sel{border-color:var(--pur);background:#f3e8ff;}
+.pet-opt:active{transform:scale(.92);}
+.pet-opt-em{font-size:2rem;}
+.pet-opt-nm{font-size:.6rem;font-weight:700;margin-top:3px;color:var(--mut);}
+
+/* PIGGY BANK */
+.piggy-wrap{background:linear-gradient(135deg,#fff9f0,#fef3c7);border:2px solid var(--gold);border-radius:var(--rad);padding:16px;margin-bottom:12px;text-align:center;}
+.piggy-em{font-size:3.5rem;margin-bottom:6px;}
+.piggy-val{font-family:'Baloo 2',cursive;font-size:2rem;font-weight:800;color:#92400e;}
+.piggy-sub{font-size:.75rem;color:var(--mut);font-weight:600;margin-bottom:12px;}
+.piggy-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.piggy-btn{padding:10px;border:none;border-radius:14px;font-family:'Baloo 2',cursive;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .2s;}
+.piggy-save{background:linear-gradient(135deg,#52C97B,#2ecc71);color:white;}
+.piggy-spend{background:linear-gradient(135deg,#FF6B6B,#FF9F43);color:white;}
+.piggy-hist{background:#f8f8f8;border-radius:12px;padding:10px 12px;margin-top:8px;font-size:.76rem;font-weight:700;text-align:left;}
+.piggy-hist-item{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #eee;}
+.piggy-hist-item:last-child{border-bottom:none;}
+
+/* VOICE MESSAGE */
+.voice-wrap{background:linear-gradient(135deg,#f3e8ff,#fde8f3);border-radius:var(--rad);padding:16px;margin-bottom:12px;text-align:center;border:2px solid #e8d5ff;}
+.voice-btn{width:80px;height:80px;border-radius:50%;border:none;background:linear-gradient(135deg,#667eea,#f093fb);font-size:2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:10px auto;box-shadow:0 8px 24px rgba(102,126,234,.4);transition:all .2s;-webkit-tap-highlight-color:transparent;}
+.voice-btn:active{transform:scale(.92);}
+.voice-btn.recording{background:linear-gradient(135deg,#FF6B6B,#FF9F43);animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 8px 24px rgba(255,107,107,.4)}50%{box-shadow:0 8px 40px rgba(255,107,107,.7)}}
+.voice-msgs{display:flex;flex-direction:column;gap:8px;margin-top:10px;}
+.voice-msg{background:white;border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px;box-shadow:0 2px 8px rgba(0,0,0,.07);}
+.voice-play{width:36px;height:36px;border-radius:50%;border:none;background:linear-gradient(135deg,#667eea,#f093fb);color:white;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.voice-info{flex:1;text-align:left;}
+.voice-date{font-size:.7rem;color:var(--mut);font-weight:600;}
+.voice-lbl{font-size:.82rem;font-weight:800;}
+.voice-del{background:none;border:none;font-size:1rem;cursor:pointer;color:var(--mut);}
+
+/* BEDTIME */
+.bed-wrap{background:linear-gradient(135deg,#1a1a3e,#2d1b69);border-radius:var(--rad);padding:18px;margin-bottom:12px;color:white;text-align:center;}
+.bed-title{font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:800;margin-bottom:4px;}
+.bed-sub{font-size:.75rem;opacity:.75;font-weight:600;margin-bottom:14px;}
+.bed-time{font-family:'Baloo 2',cursive;font-size:2.5rem;font-weight:800;color:#FFD700;margin-bottom:8px;}
+.bed-songs{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.bed-song{background:rgba(255,255,255,.1);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.bed-song:active{transform:scale(.97);}
+.bed-song-ic{font-size:1.5rem;}
+.bed-song-info{flex:1;text-align:left;}
+.bed-song-nm{font-size:.84rem;font-weight:800;}
+.bed-song-sub{font-size:.68rem;opacity:.7;font-weight:600;}
+.bed-play-ic{font-size:1.2rem;}
+
+/* FAMILIA */
+.fam-page{width:100%;max-width:600px;margin:0 auto;}
+.pr-wrap{background:linear-gradient(135deg,#667eea11,#f093fb11);border-radius:var(--rad);padding:16px;box-shadow:var(--sh);margin-bottom:12px;border:2px solid #e8d5ff;}
+.pr-title{font-family:'Baloo 2',cursive;font-size:1.05rem;font-weight:800;text-align:center;margin-bottom:3px;}
+.pr-sub{font-size:.75rem;color:var(--mut);font-weight:600;text-align:center;margin-bottom:14px;}
+.pr-parents{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.pr-parent{background:white;border-radius:14px;padding:12px 8px;text-align:center;box-shadow:0 3px 12px rgba(0,0,0,.08);border:2px solid transparent;transition:all .2s;}
+.pr-parent.rated{border-color:var(--gold);}
+.pr-pname{font-family:'Baloo 2',cursive;font-weight:800;font-size:.95rem;margin-bottom:7px;}
+.pr-mrow{display:flex;justify-content:center;gap:5px;margin-bottom:8px;}
+.pr-mood{font-size:1.7rem;cursor:pointer;transition:transform .15s;-webkit-tap-highlight-color:transparent;padding:3px;border-radius:9px;border:2px solid transparent;}
+.pr-mood.sel{transform:scale(1.2);border-color:var(--gold);background:#fffbeb;}
+.pr-mood:active{transform:scale(.88);}
+.pr-stars{display:flex;justify-content:center;gap:3px;margin-bottom:6px;}
+.pr-star{font-size:1.5rem;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.pr-note{font-size:.68rem;color:var(--mut);font-weight:600;}
+.pr-save{width:100%;padding:11px;background:linear-gradient(135deg,#52C97B,#2ecc71);color:white;font-family:'Baloo 2',cursive;font-size:.95rem;font-weight:800;border:none;border-radius:13px;cursor:pointer;margin-top:4px;}
+.pr-hist-item{display:flex;align-items:center;justify-content:space-between;background:#f8f8f8;border-radius:9px;padding:7px 11px;margin-bottom:5px;}
+
+/* ADMIN */
+.adm-sec{background:var(--card);border-radius:var(--rad);padding:14px;box-shadow:var(--sh);margin-bottom:11px;}
+.adm-t{font-family:'Baloo 2',cursive;font-weight:800;font-size:.9rem;margin-bottom:10px;}
+.ir{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:7px;}
+.fi{width:100%;padding:9px 11px;border:2px solid #eee;border-radius:10px;font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:600;background:#fafafa;outline:none;}
+.fi:focus{border-color:#7C3AED;}
+.fs{width:100%;padding:9px 11px;border:2px solid #eee;border-radius:10px;font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:600;background:#fafafa;outline:none;}
+.badd{width:100%;padding:10px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;border-radius:10px;font-family:'Baloo 2',cursive;font-size:.86rem;font-weight:700;cursor:pointer;}
+.ai{display:flex;align-items:center;justify-content:space-between;background:#f8f8f8;border-radius:8px;padding:7px 10px;margin-top:6px;}
+.ain{font-size:.76rem;font-weight:700;}.aip{font-size:.68rem;color:var(--mut);}
+.bdel{background:var(--red);color:white;border:none;border-radius:7px;padding:3px 8px;cursor:pointer;font-size:.7rem;font-weight:700;}
+.pts-opts{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:9px;}
+.pts-opt{padding:6px 13px;border-radius:20px;border:2px solid #eee;font-size:.75rem;font-weight:700;cursor:pointer;background:white;font-family:'Nunito',sans-serif;transition:all .14s;}
+.pts-opt.sel{background:linear-gradient(135deg,#667eea,#f093fb);color:white;border-color:transparent;}
+
+/* HISTORY */
+.hi{background:var(--card);border-radius:10px;padding:8px 11px;margin-bottom:5px;box-shadow:0 2px 7px rgba(0,0,0,.06);display:flex;justify-content:space-between;align-items:center;}
+.hid{font-size:.72rem;font-weight:700;}.hip{font-size:.88rem;font-weight:800;color:var(--pur);}
+.hdd{font-size:.65rem;color:var(--mut);font-weight:600;}
+.nodut{text-align:center;padding:18px 12px;color:var(--mut);font-weight:700;}
+.chip{display:inline-flex;background:#f3e8ff;color:#7C3AED;border-radius:20px;padding:2px 7px;font-size:.63rem;font-weight:700;}
+
+/* BOTTOM NAV */
+.bnav{position:fixed;bottom:0;left:0;right:0;width:100%;background:white;border-top:2px solid #f0e6ff;display:flex;z-index:1000;box-shadow:0 -4px 20px rgba(0,0,0,.08);}
+.bni{flex:1;min-width:0;padding:6px 1px 10px;text-align:center;cursor:pointer;font-size:.46rem;font-weight:700;color:var(--mut);display:flex;flex-direction:column;align-items:center;gap:1px;-webkit-tap-highlight-color:transparent;overflow:hidden;}
+.bni .ic{font-size:1.1rem;line-height:1;}.bni.act{color:#7C3AED;}
+
+/* TOAST */
+.toast{position:fixed;bottom:82px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a1a2e;color:white;padding:9px 18px;border-radius:26px;font-weight:700;font-size:.8rem;z-index:1100;opacity:0;transition:all .25s;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.28);pointer-events:none;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* CELEB */
+.cov{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:200;opacity:0;pointer-events:none;transition:opacity .25s;}
+.cov.show{opacity:1;pointer-events:all;}
+.cbox{background:white;border-radius:24px;padding:24px 18px;text-align:center;max-width:310px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.28);animation:popIn .25s cubic-bezier(.34,1.56,.64,1);}
+@keyframes popIn{from{transform:scale(.6)}to{transform:scale(1)}}
+.cem{font-size:2.8rem;margin-bottom:6px;}.ctit{font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:800;margin-bottom:5px;}
+.cmsg{font-size:.82rem;color:var(--mut);font-weight:600;margin-bottom:14px;line-height:1.5;}
+.cbtn2{padding:10px 24px;background:linear-gradient(135deg,#667eea,#f093fb);color:white;border:none;border-radius:20px;font-family:'Baloo 2',cursive;font-size:.92rem;font-weight:700;cursor:pointer;}
+
+/* CONFETTI */
+.cfp{position:fixed;border-radius:2px;animation:cffall 2.5s ease-in forwards;pointer-events:none;z-index:300;}
+@keyframes cffall{0%{transform:translateY(-20px) rotate(0);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+
+/* STAR GAME */
+.sov{position:fixed;inset:0;background:linear-gradient(135deg,#0f0c29,#302b63);z-index:500;display:none;flex-direction:column;align-items:center;justify-content:center;padding:16px;}
+.sov.show{display:flex;}
+.stit{font-family:'Baloo 2',cursive;font-size:1.5rem;font-weight:800;color:white;margin-bottom:3px;text-align:center;}
+.ssub{font-size:.82rem;color:rgba(255,255,255,.7);font-weight:600;margin-bottom:12px;text-align:center;}
+#sc{border-radius:14px;max-width:100%;touch-action:none;display:block;}
+.ssc{font-family:'Baloo 2',cursive;font-size:2.4rem;font-weight:800;color:#FFD700;margin-top:9px;}
+.stm{font-size:.86rem;color:rgba(255,255,255,.8);font-weight:700;margin-top:2px;}
+.sdone{display:none;margin-top:11px;padding:11px 30px;background:linear-gradient(135deg,#52C97B,#FFD700);color:white;border:none;border-radius:20px;font-family:'Baloo 2',cursive;font-size:.95rem;font-weight:700;cursor:pointer;}
+
+/* FLOAT STAR */
+.fst{position:fixed;pointer-events:none;z-index:400;animation:fstup .9s ease-out forwards;font-size:1.6rem;}
+@keyframes fstup{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(1.5)}}
+
+/* DEV / CRECER */
+.dev-card{background:var(--card);border-radius:var(--rad);padding:14px;box-shadow:var(--sh);margin-bottom:10px;}
+.dc-hdr{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.dc-ic{font-size:1.4rem;}.dc-tit{font-family:'Baloo 2',cursive;font-weight:800;font-size:.9rem;}.dc-sub{font-size:.68rem;color:var(--mut);font-weight:600;}
+.ms-list{display:flex;flex-direction:column;gap:5px;}
+.ms{display:flex;align-items:center;gap:7px;padding:7px 9px;border-radius:8px;background:#f8f8f8;}
+.ms.done{background:#f0fdf4;}.ms.cur{background:#fffbeb;border:1px solid var(--gold);}
+.ms-ic{font-size:.9rem;}.ms-tx{font-size:.77rem;font-weight:700;flex:1;}
+.prog-wrap{background:#eee;border-radius:20px;height:7px;margin:6px 0 3px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,#667eea,#f093fb);transition:width .4s;}
+.prog-lbl{font-size:.66rem;color:var(--mut);font-weight:600;display:flex;justify-content:space-between;}
+
+/* WIZARD */
+.wiz-overlay{position:fixed;inset:0;background:linear-gradient(135deg,#667eea,#f093fb);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;}
+.wiz-box{background:white;border-radius:28px;padding:28px 22px;max-width:400px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,.3);}
+.wiz-step{display:none;}.wiz-step.act{display:block;}
+.wiz-em{font-size:4rem;text-align:center;margin-bottom:8px;}
+.wiz-title{font-family:'Baloo 2',cursive;font-size:1.5rem;font-weight:800;text-align:center;margin-bottom:4px;}
+.wiz-sub{font-size:.85rem;color:var(--mut);font-weight:600;text-align:center;margin-bottom:18px;line-height:1.5;}
+.wiz-dots{display:flex;justify-content:center;gap:6px;margin-bottom:18px;}
+.wiz-dot{width:8px;height:8px;border-radius:50%;background:#eee;transition:all .2s;}
+.wiz-dot.act{background:#667eea;width:20px;border-radius:20px;}
+.wiz-input{width:100%;padding:12px 14px;border:2px solid #eee;border-radius:14px;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:600;outline:none;margin-bottom:10px;}
+.wiz-input:focus{border-color:#667eea;}
+.wiz-btn{width:100%;padding:14px;background:linear-gradient(135deg,#667eea,#f093fb);color:white;font-family:'Baloo 2',cursive;font-weight:800;font-size:1rem;border:none;border-radius:14px;cursor:pointer;margin-top:6px;}
+.wiz-skip{display:block;text-align:center;margin-top:10px;font-size:.78rem;color:var(--mut);font-weight:700;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.wiz-emoji-row{display:flex;justify-content:center;gap:10px;margin-bottom:14px;}
+.wiz-emo{font-size:2.2rem;cursor:pointer;padding:8px;border-radius:14px;border:2px solid transparent;transition:all .15s;-webkit-tap-highlight-color:transparent;}
+.wiz-emo.sel{border-color:#667eea;background:#f0e6ff;transform:scale(1.1);}
+
+input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;}
+input[type=number]{-moz-appearance:textfield;}
+</style>
+</head>
+<body>
+
+<!-- WIZARD -->
+<div class="wiz-overlay" id="wizOverlay" style="display:none">
+  <div class="wiz-box">
+    <div class="wiz-dots" id="wizDots"></div>
+    <!-- Step 1: Welcome -->
+    <div class="wiz-step act" id="ws1">
+      <div class="wiz-em">👨‍👩‍👧‍👦</div>
+      <div class="wiz-title">¡Bienvenidos!</div>
+      <div class="wiz-sub">Vamos a configurar la app para tu familia en menos de 2 minutos. ¿Listos?</div>
+      <button class="wiz-btn" onclick="wizNext()">¡Empecemos! 🚀</button>
+    </div>
+    <!-- Step 2: Family name -->
+    <div class="wiz-step" id="ws2">
+      <div class="wiz-em">🏠</div>
+      <div class="wiz-title">¿Cómo se llama su familia?</div>
+      <div class="wiz-sub">Este nombre aparecerá en toda la app.</div>
+      <input class="wiz-input" id="wFamName" placeholder="Ej: Familia Rodríguez" maxlength="30"/>
+      <button class="wiz-btn" onclick="wizNext()">Siguiente →</button>
+      <span class="wiz-skip" onclick="wizNext()">Omitir</span>
+    </div>
+    <!-- Step 3: Parent names -->
+    <div class="wiz-step" id="ws3">
+      <div class="wiz-em">👫</div>
+      <div class="wiz-title">¿Cómo se llaman los padres?</div>
+      <div class="wiz-sub">Los niños los calificarán usando estos nombres.</div>
+      <input class="wiz-input" id="wDadName" placeholder="Nombre de Papá" maxlength="20"/>
+      <input class="wiz-input" id="wMomName" placeholder="Nombre de Mamá" maxlength="20"/>
+      <button class="wiz-btn" onclick="wizNext()">Siguiente →</button>
+    </div>
+    <!-- Step 4: Points name -->
+    <div class="wiz-step" id="ws4">
+      <div class="wiz-em">✨</div>
+      <div class="wiz-title">¿Cómo llamamos a los puntos?</div>
+      <div class="wiz-sub">Elige el nombre que más les guste a los niños.</div>
+      <div class="wiz-emoji-row" id="wPtsRow"></div>
+      <button class="wiz-btn" onclick="wizNext()">Siguiente →</button>
+    </div>
+    <!-- Step 5: Currency -->
+    <div class="wiz-step" id="ws5">
+      <div class="wiz-em">🪙</div>
+      <div class="wiz-title">¿Cuál es su moneda?</div>
+      <div class="wiz-sub">Para la alcancía virtual. Cada punto = 0.50 de tu moneda.</div>
+      <div class="wiz-emoji-row" style="flex-wrap:wrap;gap:8px" id="wCurrRow"></div>
+      <button class="wiz-btn" onclick="wizNext()">Siguiente →</button>
+    </div>
+    <!-- Step 6: Bedtime -->
+    <div class="wiz-step" id="ws6">
+      <div class="wiz-em">🌙</div>
+      <div class="wiz-title">¿A qué hora duermen?</div>
+      <div class="wiz-sub">Te recordaremos iniciar la rutina de dormir a esa hora.</div>
+      <input class="wiz-input" id="wBedtime" type="time" value="20:00"/>
+      <button class="wiz-btn" onclick="wizNext()">Siguiente →</button>
+      <span class="wiz-skip" onclick="wizNext()">Omitir</span>
+    </div>
+    <!-- Step 7: Done -->
+    <div class="wiz-step" id="ws7">
+      <div class="wiz-em">🎉</div>
+      <div class="wiz-title">¡Todo listo!</div>
+      <div class="wiz-sub">Tu app familiar está configurada. Puedes cambiar todo esto desde Ajustes en cualquier momento.</div>
+      <button class="wiz-btn" onclick="wizFinish()">¡Empezar a usar! 🌟</button>
+    </div>
+  </div>
+</div>
+
+<div class="hdr">
+  <div class="hdr-logo" id="hdrLogo">⭐ Familia Rodríguez</div>
+  <div class="hdr-r"><div class="hdr-day" id="hDay">—</div><div id="hDate">—</div></div>
+</div>
+
+<div class="bnav">
+  <div class="bni act" onclick="go('home')"><div class="ic">🏠</div>Inicio</div>
+  <div class="bni" onclick="go('deberes')"><div class="ic">📋</div>Deberes</div>
+  <div class="bni" onclick="go('recompensas')"><div class="ic">🎁</div>Premios</div>
+  <div class="bni" onclick="go('mascota')"><div class="ic">🐾</div>Mascota</div>
+  <div class="bni" onclick="go('crecer')"><div class="ic">🌱</div>Crecer</div>
+  <div class="bni" onclick="go('familia')"><div class="ic">👨‍👩‍👧‍👦</div>Familia</div>
+  <div class="bni" onclick="go('admin')"><div class="ic">⚙️</div>Admin</div>
+</div>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="cs">
+    <div class="cc liam sel" onclick="sel('liam')"><div class="cc-av" id="hav-liam">🚀</div><div class="cc-nm" style="color:var(--ld)">Liam</div><div class="cc-age" id="hage-liam"></div><div class="cc-pts" id="hpts-liam">0</div></div>
+    <div class="cc consta" onclick="sel('consta')"><div class="cc-av" id="hav-consta">🌸</div><div class="cc-nm" style="color:var(--cd)">Constanza</div><div class="cc-age" id="hage-consta"></div><div class="cc-pts" id="hpts-consta">0</div></div>
+  </div>
+  <div class="st">📅 Esta Semana — <span id="hcname">Liam</span></div>
+  <div class="wg" id="wg"></div>
+  <div class="pb">
+    <div class="pg"><div class="pv pe" id="hEarned">0</div><div class="pl">⬆ Ganados</div></div>
+    <div class="pg"><div class="pv pm" id="hLost">0</div><div class="pl">⬇ Perdidos</div></div>
+    <div class="pg"><div class="pv pn" id="hNet">0</div><div class="pl" id="hNetLbl">Total</div></div>
+  </div>
+  <div class="st">🏆 Logros</div>
+  <div class="sg">
+    <div class="sc"><div class="sv" id="sStreak">0 🔥</div><div class="sl">Días seguidos</div></div>
+    <div class="sc"><div class="sv" id="sBest">0</div><div class="sl" id="sBestLbl">Mejor día</div></div>
+    <div class="sc"><div class="sv" id="sComp">0%</div><div class="sl">✅ Cumplimiento</div></div>
+    <div class="sc"><div class="sv" id="sRed">0</div><div class="sl">🎁 Canjeados</div></div>
+  </div>
+  <button class="abtn" id="fridayBtn" onclick="fridayRedeem()">🎉 Canjear Premios</button>
+
+  <!-- BEDTIME BANNER -->
+  <div id="bedBanner" style="display:none;margin-top:12px;background:linear-gradient(135deg,#1a1a3e,#2d1b69);border-radius:var(--rad);padding:14px;color:white;text-align:center;">
+    <div style="font-size:1.5rem">🌙</div>
+    <div style="font-family:'Baloo 2',cursive;font-weight:800;font-size:1rem;margin:4px 0">¡Hora de dormir!</div>
+    <div style="font-size:.78rem;opacity:.8;font-weight:600;margin-bottom:10px">¿Ponemos música para relajarse?</div>
+    <button onclick="go('bedtime')" style="padding:9px 20px;background:linear-gradient(135deg,#667eea,#f093fb);color:white;border:none;border-radius:14px;font-family:'Baloo 2',cursive;font-size:.88rem;font-weight:700;cursor:pointer">🎵 Sí, música de dormir</button>
+  </div>
+</div>
+
+<!-- DEBERES -->
+<div class="page" id="page-deberes">
+  <div class="cs">
+    <div class="cc liam sel" onclick="sel('liam');renderDuties()"><div class="cc-av">🚀</div><div class="cc-nm" style="color:var(--ld)">Liam</div></div>
+    <div class="cc consta" onclick="sel('consta');renderDuties()"><div class="cc-av">🌸</div><div class="cc-nm" style="color:var(--cd)">Constanza</div></div>
+  </div>
+  <div class="st">📋 Deberes de Hoy</div>
+  <div class="cf2">
+    <div class="ch ca a" onclick="fcat('all')">Todos</div>
+    <div class="ch ci" onclick="fcat('higiene')">🚿</div>
+    <div class="ch ce" onclick="fcat('estudio')">📚</div>
+    <div class="ch co" onclick="fcat('hogar')">🏠</div>
+    <div class="ch cb2" onclick="fcat('habitos')">❤️</div>
+    <div class="ch cs" onclick="fcat('social')">🤝</div>
+  </div>
+  <div class="dl" id="dutyList"></div>
+  <button class="abtn" onclick="saveDay()">💾 Guardar día y celebrar 🎊</button>
+</div>
+
+<!-- RECOMPENSAS -->
+<div class="page" id="page-recompensas">
+  <div class="cs">
+    <div class="cc liam sel" onclick="sel('liam');renderRewards()"><div class="cc-av">🚀</div><div class="cc-nm" style="color:var(--ld)">Liam</div></div>
+    <div class="cc consta" onclick="sel('consta');renderRewards()"><div class="cc-av">🌸</div><div class="cc-nm" style="color:var(--cd)">Constanza</div></div>
+  </div>
+  <div class="pb" style="margin-bottom:12px">
+    <div class="pg"><div class="pv pn" id="rPts">0</div><div class="pl" id="rPtsLbl">Disponibles</div></div>
+    <div style="font-size:.72rem;color:var(--mut);font-weight:600">Canjea premios<br>con tus puntos ✨</div>
+  </div>
+  <!-- PIGGY BANK -->
+  <div class="st">🐷 Alcancía</div>
+  <div class="piggy-wrap">
+    <div class="piggy-em">🐷</div>
+    <div class="piggy-val" id="piggyVal">$0.00</div>
+    <div class="piggy-sub" id="piggySub">Cada punto = $0.50</div>
+    <div class="piggy-btns">
+      <button class="piggy-btn piggy-save" onclick="piggyDeposit()">💰 Ahorrar puntos</button>
+      <button class="piggy-btn piggy-spend" onclick="piggySpend()">🛍️ Gastar ahorros</button>
+    </div>
+    <div class="piggy-hist" id="piggyHist"></div>
+  </div>
+  <div class="st">🎁 Premios Disponibles</div>
+  <div class="rg" id="rewardsGrid"></div>
+  <div class="st" style="margin-top:16px">📜 Historial</div>
+  <div id="rewardHist"></div>
+</div>
+
+<!-- MASCOTA (dedicated full page) -->
+<div class="page" id="page-mascota">
+  <div class="cs">
+    <div class="cc liam sel" onclick="sel('liam');renderMascota()"><div class="cc-av">🚀</div><div class="cc-nm" style="color:var(--ld)">Liam</div></div>
+    <div class="cc consta" onclick="sel('consta');renderMascota()"><div class="cc-av">🌸</div><div class="cc-nm" style="color:var(--cd)">Constanza</div></div>
+  </div>
+  <div class="st">🌸 Bloomy</div>
+  <div class="pet-wrap" id="petWrap">
+    <div class="pet-bg" id="petBg" style="display:none"></div>
+    <div class="pet-bub" id="petBub">¡Hola!</div>
+    <div class="pet-badge" id="petBadge">Etapa</div><br>
+    <img class="pet-em" id="petEm" src="icons/bloomy-default.png" alt="Bloomy" onclick="tapPet(event)">
+    <div class="pet-nm" id="petNm">Mascota</div>
+    <div class="pet-md" id="petMd">¡Tócame!</div>
+    <div class="xpbar"><div class="xpfill" id="xpFill" style="width:0%"></div></div>
+    <div class="xplbl" id="xpLbl">0 / 0 XP</div>
+    <div style="font-size:.7rem;color:var(--mut);font-weight:600;margin-top:8px">👆 ¡Toca a Bloomy para que reaccione!</div>
+  </div>
+  <div class="st">🏆 Etapas de Bloomy</div>
+  <div class="pet-chooser" id="petChooser"></div>
+
+  <!-- VOICE MESSAGE -->
+  <div class="st">🎙️ Mensaje del Día</div>
+  <div class="voice-wrap">
+    <div style="font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;margin-bottom:2px">¿Qué quieres recordar hoy?</div>
+    <div style="font-size:.75rem;color:var(--mut);font-weight:600;margin-bottom:8px">Mantén presionado el botón para grabar tu voz</div>
+    <button class="voice-btn" id="voiceBtn" onpointerdown="startRec()" onpointerup="stopRec()" onpointerleave="stopRec()">🎤</button>
+    <div id="recStatus" style="font-size:.75rem;color:var(--mut);font-weight:700;min-height:20px"></div>
+    <div class="voice-msgs" id="voiceMsgs"></div>
+  </div>
+</div>
+
+<!-- CRECER -->
+<div class="page" id="page-crecer">
+  <div class="cs">
+    <div class="cc liam sel" onclick="sel('liam');renderCrecer()"><div class="cc-av">🚀</div><div class="cc-nm" style="color:var(--ld)">Liam</div></div>
+    <div class="cc consta" onclick="sel('consta');renderCrecer()"><div class="cc-av">🌸</div><div class="cc-nm" style="color:var(--cd)">Constanza</div></div>
+  </div>
+  <div id="crecerContent"></div>
+</div>
+
+<!-- FAMILIA -->
+<div class="page" id="page-familia">
+  <div class="cs" style="margin-bottom:14px">
+    <div class="cc liam sel" onclick="sel('liam');renderFamilia()"><div class="cc-av">🚀</div><div class="cc-nm" style="color:var(--ld)">Liam</div></div>
+    <div class="cc consta" onclick="sel('consta');renderFamilia()"><div class="cc-av">🌸</div><div class="cc-nm" style="color:var(--cd)">Constanza</div></div>
+  </div>
+  <div id="familiaContent"></div>
+</div>
+
+<!-- BEDTIME -->
+<div class="page" id="page-bedtime">
+  <div class="st">🌙 Hora de Dormir</div>
+  <div class="bed-wrap">
+    <div class="bed-title">Música para relajarse 🎵</div>
+    <div class="bed-sub">Canciones suaves para un sueño tranquilo</div>
+    <div class="bed-time" id="bedClock">20:00</div>
+    <div class="bed-songs" id="bedSongs"></div>
+  </div>
+  <div class="card" style="text-align:center">
+    <div style="font-size:.8rem;font-weight:700;color:var(--mut);margin-bottom:8px">Hora configurada de dormir</div>
+    <input type="time" class="fi" id="bedTimeInput" value="20:00" style="text-align:center;font-size:1rem;font-weight:800"/>
+    <button class="badd" style="margin-top:8px" onclick="saveBedtime()">💾 Guardar hora</button>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div class="page" id="page-admin">
+  <div class="adm-sec">
+    <div class="adm-t">✨ Nombre de los Puntos</div>
+    <div class="pts-opts" id="ptsOpts"></div>
+    <div style="display:flex;gap:7px;margin-top:5px">
+      <input class="fi" id="ptsCustom" placeholder="Personalizado..." style="flex:1"/>
+      <button class="badd" style="width:auto;padding:9px 12px" onclick="setPtsName()">OK</button>
+    </div>
+    <div style="margin-top:6px;font-size:.72rem;color:var(--mut);font-weight:600">Actual: <strong id="ptsCurrentLbl">Puntos</strong></div>
+  </div>
+  <div class="adm-sec">
+    <div class="adm-t">👨‍👩‍👧‍👦 Nombres y Moneda</div>
+    <div class="ir">
+      <input class="fi" id="dadNameInput" placeholder="Nombre de Papá"/>
+      <input class="fi" id="momNameInput" placeholder="Nombre de Mamá"/>
+    </div>
+    <div class="ir">
+      <input class="fi" id="famNameInput" placeholder="Nombre de la familia"/>
+      <select class="fs" id="currencyInput">
+        <option value="USD">🇺🇸 USD $</option>
+        <option value="PAB">🇵🇦 PAB B/.</option>
+        <option value="EUR">🇪🇺 EUR €</option>
+        <option value="COP">🇨🇴 COP $</option>
+        <option value="MXN">🇲🇽 MXN $</option>
+        <option value="ARS">🇦🇷 ARS $</option>
+        <option value="BRL">🇧🇷 BRL R$</option>
+        <option value="CLP">🇨🇱 CLP $</option>
+        <option value="PEN">🇵🇪 PEN S/</option>
+        <option value="VES">🇻🇪 VES Bs.</option>
+      </select>
+    </div>
+    <button class="badd" onclick="saveConfig()">💾 Guardar</button>
+  </div>
+  <div class="adm-sec">
+    <div class="adm-t">🎁 ¿Cuándo canjear premios?</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+      <label style="display:flex;align-items:center;gap:5px;font-size:.8rem;font-weight:700;cursor:pointer">
+        <input type="radio" name="redeemRule" id="rAny" value="any" onchange="saveRedeemRule()"> Cualquier día
+      </label>
+      <label style="display:flex;align-items:center;gap:5px;font-size:.8rem;font-weight:700;cursor:pointer">
+        <input type="radio" name="redeemRule" id="rFri" value="friday" onchange="saveRedeemRule()"> Solo viernes
+      </label>
+      <label style="display:flex;align-items:center;gap:5px;font-size:.8rem;font-weight:700;cursor:pointer">
+        <input type="radio" name="redeemRule" id="rFriPm" value="friday3pm" onchange="saveRedeemRule()"> Viernes 3pm+
+      </label>
+    </div>
+    <div style="font-size:.7rem;color:var(--mut);font-weight:600" id="redeemRuleLbl"></div>
+  </div>
+  <div class="adm-sec">
+    <div class="adm-t">📋 Agregar Deber</div>
+    <div class="ir"><input class="fi" id="dName" placeholder="Nombre del deber"/><select class="fs" id="dCat"><option value="higiene">🚿 Higiene</option><option value="estudio">📚 Estudio</option><option value="hogar">🏠 Hogar</option><option value="habitos">❤️ Hábitos</option><option value="social">🤝 Social</option></select></div>
+    <div class="ir"><input class="fi" id="dFull" type="number" placeholder="Pts completo"/><input class="fi" id="dPart" type="number" placeholder="Pts parcial"/></div>
+    <div class="ir"><input class="fi" id="dNone" type="number" placeholder="Penalización (-3)"/><select class="fs" id="dFor"><option value="both">Ambos</option><option value="liam">Solo Liam</option><option value="consta">Solo Constanza</option></select></div>
+    <button class="badd" onclick="addDuty()">+ Agregar Deber</button>
+    <div id="dutyAdminList"></div>
+  </div>
+  <div class="adm-sec">
+    <div class="adm-t">🎁 Agregar Premio</div>
+    <div class="ir"><input class="fi" id="rName" placeholder="Nombre del premio"/><input class="fi" id="rEmoji" placeholder="Emoji (🍦)"/></div>
+    <div class="ir"><input class="fi" id="rCost" type="number" placeholder="Costo en puntos"/><select class="fs" id="rFor"><option value="both">Ambos</option><option value="liam">Solo Liam</option><option value="consta">Solo Constanza</option></select></div>
+    <button class="badd" onclick="addReward()">+ Agregar Premio</button>
+    <div id="rewardAdminList"></div>
+  </div>
+  <div class="adm-sec">
+    <div class="adm-t">🗓️ Historial</div>
+    <div style="display:flex;gap:7px;margin-bottom:8px">
+      <div class="cc liam" style="flex:1;padding:8px;cursor:pointer" onclick="showHist('liam')"><div style="font-size:1.2rem">🚀</div><div style="font-size:.74rem;font-weight:800;color:var(--ld)">Liam</div></div>
+      <div class="cc consta" style="flex:1;padding:8px;cursor:pointer" onclick="showHist('consta')"><div style="font-size:1.2rem">🌸</div><div style="font-size:.74rem;font-weight:800;color:var(--cd)">Constanza</div></div>
+    </div>
+    <div id="histList"></div>
+  </div>
+  <div class="adm-sec">
+    <div class="adm-t">🔄 Resetear</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <button class="badd" style="background:linear-gradient(135deg,#FF6B6B,#FF9F43)" onclick="resetWeek()">🔄 Semana</button>
+      <button class="badd" style="background:linear-gradient(135deg,#dc2626,#991b1b)" onclick="resetAll()">⚠️ Todo</button>
+    </div>
+    <p style="font-size:.7rem;color:var(--mut);font-weight:600;margin-top:6px">⚠️ "Todo" borra todos los datos. Irreversible.</p>
+  </div>
+  <div class="adm-sec">
+    <div class="adm-t">🧙 Volver a ver el Wizard</div>
+    <button class="badd" style="background:linear-gradient(135deg,#667eea,#f093fb)" onclick="showWizard()">🔄 Reconfigurar App</button>
+  </div>
+</div>
+
+<!-- STAR GAME -->
+<div class="sov" id="sov">
+  <div class="stit" id="stit">⭐ ¡Atrapa!</div>
+  <div class="ssub" id="ssub">Toca las estrellas</div>
+  <canvas id="sc" width="310" height="320"></canvas>
+  <div class="ssc" id="ssc">0 ⭐</div>
+  <div class="stm" id="stm">15 seg</div>
+  <button class="sdone" id="sdone" onclick="closeStarGame()">¡Listo! Ver mis puntos 🎊</button>
+</div>
+
+<!-- CELEB -->
+<div class="cov" id="cov"><div class="cbox"><div class="cem" id="cem">🎉</div><div class="ctit" id="ctit">¡Felicitaciones!</div><div class="cmsg" id="cmsg"></div><button class="cbtn2" onclick="closeCeleb()">¡Genial! ⭐</button></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+//  CONFIG
+// ============================================================
+const KIDS = {
+  liam:   {name:'Liam Valentino Rodríguez',   emoji:'🚀',dob:'2024-01-24',key:'liam'  },
+  consta: {name:'Constanza Valentina Rodríguez',emoji:'🌸',dob:'2020-03-18',key:'consta'} // FIXED: 2020
+};
+const DAYS = ['Lunes','Martes','Miércoles','Jueves','Viernes'];
+const PTS_NAMES = ['Puntos','Estrellitas','Unicornios','Destellos','Chispas','Champiñones'];
+const PTS_ICONS = {Puntos:'⭐',Estrellitas:'🌟',Unicornios:'🦄',Destellos:'✨',Chispas:'⚡',Champiñones:'🍄'};
+const CURRENCIES = {USD:{sym:'$',name:'USD'},PAB:{sym:'B/.',name:'PAB'},EUR:{sym:'€',name:'EUR'},COP:{sym:'$',name:'COP'},MXN:{sym:'$',name:'MXN'},ARS:{sym:'$',name:'ARS'},BRL:{sym:'R$',name:'BRL'},CLP:{sym:'$',name:'CLP'},PEN:{sym:'S/',name:'PEN'},VES:{sym:'Bs.',name:'VES'}};
+const PET_TYPES = [
+  {id:'dragon',stages:['🥚','🐣','🐲','🐉'],name:'Dragón'},
+  {id:'cat',stages:['🥚','🐱','😺','🦁'],name:'Gato'},
+  {id:'bunny',stages:['🥚','🐣','🐰','🐇'],name:'Conejito'},
+  {id:'dino',stages:['🥚','🦕','🦖','🐊'],name:'Dino'},
+];
+const PET_STAGES_XP = [0,20,80,200];
+const PET_PHRASES = ['¡Gracias! 😊','¡Más cariño! 🥰','¡Estoy feliz!','¡Te quiero! 💕','¡Juguemos!','¡Yay!⭐','¡Eres genial!'];
+const MOODS = ['😤','😐','🙂','😊','🥰'];
+const MOOD_LABELS = ['Difícil','Normal','Bien','Muy bien','¡Genial!'];
+const BED_SONGS = [
+  {name:'Duérmete mi niño',sub:'Canción de cuna clásica',ic:'🌙',url:'https://www.youtube.com/results?search_query=duermete+mi+niño+cancion+de+cuna'},
+  {name:'Estrellita dónde estás',sub:'Twinkle Twinkle en español',ic:'⭐',url:'https://www.youtube.com/results?search_query=estrellita+donde+estas+infantil'},
+  {name:'Música relajante para niños',sub:'Sonidos suaves de naturaleza',ic:'🌊',url:'https://www.youtube.com/results?search_query=musica+relajante+para+niños+dormir'},
+  {name:'Ruido blanco para bebés',sub:'Para dormir profundo',ic:'☁️',url:'https://www.youtube.com/results?search_query=ruido+blanco+bebe+dormir'},
+  {name:'Nanas del mundo',sub:'Canciones de cuna internacionales',ic:'🌍',url:'https://www.youtube.com/results?search_query=nanas+canciones+cuna+infantil'},
+];
+
+// ============================================================
+//  STATE
+// ============================================================
+let S = loadState();
+let kid = 'liam';
+let catF = 'all';
+let page = 'home';
+let petBubTimer = null;
+let starIv=null,starAnim=null,starSc=0,starTm=15,starStars=[],pendingPts=0;
+let _sTap=null,_sTouch=null;
+let mediaRecorder=null,audioChunks=[],isRecording=false;
+let wizStep=1,wizPtsChoice='Puntos',wizCurrChoice='USD';
+
+function defaultState(){
+  return {
+    familyName:'Familia Rodríguez',
+    ptsName:'Puntos',dadName:'Papá',momName:'Mamá',
+    currency:'PAB',
+    redeemRule:'any',
+    bedtime:'20:00',
+    wizardDone:false,
+    duties:[
+      {id:'d1',name:'Cepillarse los dientes',cat:'higiene',ptsFull:10,ptsPart:5,ptsNone:-3,for:'both'},
+      {id:'d2',name:'Bañarse',cat:'higiene',ptsFull:10,ptsPart:5,ptsNone:-2,for:'both'},
+      {id:'d3',name:'Ordenar los juguetes',cat:'hogar',ptsFull:8,ptsPart:4,ptsNone:-2,for:'both'},
+      {id:'d4',name:'Tarea escolar',cat:'estudio',ptsFull:15,ptsPart:8,ptsNone:-5,for:'consta'},
+      {id:'d5',name:'Leer un cuento',cat:'habitos',ptsFull:10,ptsPart:5,ptsNone:0,for:'both'},
+      {id:'d6',name:'Comer sin quejarse',cat:'habitos',ptsFull:8,ptsPart:4,ptsNone:-2,for:'both'},
+      {id:'d7',name:'Saludar y despedirse',cat:'social',ptsFull:6,ptsPart:3,ptsNone:0,for:'both'},
+      {id:'d8',name:'Siesta / dormir a tiempo',cat:'habitos',ptsFull:10,ptsPart:5,ptsNone:-3,for:'liam'},
+    ],
+    rewards:[
+      {id:'r1',name:'Ver película',emoji:'🎬',cost:40,for:'both'},
+      {id:'r2',name:'Helado especial',emoji:'🍦',cost:30,for:'both'},
+      {id:'r3',name:'Juego en iPad',emoji:'📱',cost:50,for:'both'},
+      {id:'r4',name:'Pizza de cena',emoji:'🍕',cost:60,for:'both'},
+      {id:'r5',name:'Parque o paseo',emoji:'🎠',cost:70,for:'both'},
+      {id:'r6',name:'Juguete sorpresa',emoji:'🎁',cost:150,for:'both'},
+    ],
+    children:{
+      liam:  {pts:0,wkPts:[0,0,0,0,0],streak:0,bestDay:0,totalRed:0,totalEarned:0,hist:[],rHist:[],comps:{},petType:'dragon',petPhrase:0,piggy:0,piggyHist:[],voiceMsgs:[],parentRatings:[]},
+      consta:{pts:0,wkPts:[0,0,0,0,0],streak:0,bestDay:0,totalRed:0,totalEarned:0,hist:[],rHist:[],comps:{},petType:'cat',petPhrase:0,piggy:0,piggyHist:[],voiceMsgs:[],parentRatings:[]},
+    },
+    parentPts:{dad:0,mom:0},
+  };
+}
+function loadState(){try{const s=localStorage.getItem('familiaRodriguez_v4');return s?JSON.parse(s):defaultState();}catch(e){return defaultState();}}
+function save(){localStorage.setItem('familiaRodriguez_v4',JSON.stringify(S));}
+
+// ============================================================
+//  UTILS
+// ============================================================
+function ptsIcon(){return PTS_ICONS[S.ptsName]||'⭐';}
+function ptsLbl(){return S.ptsName||'Puntos';}
+function currSym(){return CURRENCIES[S.currency||'USD']?.sym||'$';}
+function parseDOB(dob){const[y,m,d]=dob.split('-').map(Number);return new Date(y,m-1,d);}
+function getAge(dob){
+  const b=parseDOB(dob),n=new Date();
+  let y=n.getFullYear()-b.getFullYear(),m=n.getMonth()-b.getMonth();
+  if(m<0||(m===0&&n.getDate()<b.getDate())){y--;m+=12;}
+  if(n.getDate()<b.getDate())m--;
+  return{years:y,months:(n.getFullYear()-b.getFullYear())*12+n.getMonth()-b.getMonth()};
+}
+function nextBday(dob){
+  const b=parseDOB(dob),n=new Date();
+  let nx=new Date(n.getFullYear(),b.getMonth(),b.getDate());
+  if(nx<=n)nx=new Date(n.getFullYear()+1,b.getMonth(),b.getDate());
+  const days=Math.round((nx-n)/864e5);
+  const fmt=nx.toLocaleDateString('es-PA',{day:'2-digit',month:'short'});
+  return days===0?'¡Hoy! 🎂':days<=7?`¡En ${days} días! 🎂`:fmt;
+}
+function todayIdx(){const d=new Date().getDay();return d===0?4:d-1;}
+function todayStr(){return new Date().toISOString().split('T')[0];}
+function isFriday(){return new Date().getDay()===5;}
+function fmtDate(ds){return new Date(ds).toLocaleDateString('es-PA',{day:'2-digit',month:'short',year:'2-digit'});}
+function catLbl(c){return{higiene:'Higiene',estudio:'Estudio',hogar:'Hogar',habitos:'Hábitos',social:'Social'}[c]||c;}
+function catBadge(c){return{higiene:'bh',estudio:'be',hogar:'bo',habitos:'ba',social:'bs'}[c]||'';}
+
+function toast(msg,dur=2500){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),dur);}
+function celeb(em,tit,msg){document.getElementById('cem').textContent=em;document.getElementById('ctit').textContent=tit;document.getElementById('cmsg').textContent=msg;document.getElementById('cov').classList.add('show');confetti();}
+function closeCeleb(){document.getElementById('cov').classList.remove('show');}
+function confetti(){const colors=['#ff6b6b','#ffd700','#52c97b','#4a90e2','#e85d9a','#a855f7','#ff9f43'];for(let i=0;i<60;i++){const el=document.createElement('div');el.className='cfp';el.style.cssText=`left:${Math.random()*100}vw;top:-10px;background:${colors[~~(Math.random()*colors.length)]};width:${6+Math.random()*9}px;height:${6+Math.random()*9}px;animation-duration:${1.5+Math.random()*2}s;animation-delay:${Math.random()*.9}s;border-radius:${Math.random()>.5?'50%':'2px'}`;document.body.appendChild(el);setTimeout(()=>el.remove(),3600);}}
+function floatStar(x,y){const el=document.createElement('div');el.className='fst';el.textContent=ptsIcon();el.style.cssText=`left:${x-14}px;top:${y-14}px`;document.body.appendChild(el);setTimeout(()=>el.remove(),900);}
+
+// SOUND via Web Audio API
+function playSound(type){
+  try{
+    const ctx=new(window.AudioContext||window.webkitAudioContext)();
+    const osc=ctx.createOscillator(),gain=ctx.createGain();
+    osc.connect(gain);gain.connect(ctx.destination);
+    const sounds={tap:[440,.1],complete:[523,.15],reward:[659,.3],error:[220,.1],star:[880,.08]};
+    const[freq,dur]=sounds[type]||[440,.1];
+    osc.frequency.setValueAtTime(freq,ctx.currentTime);
+    if(type==='complete'){osc.frequency.setValueAtTime(523,ctx.currentTime);osc.frequency.setValueAtTime(659,ctx.currentTime+.08);osc.frequency.setValueAtTime(784,ctx.currentTime+.16);}
+    if(type==='reward'){osc.frequency.setValueAtTime(523,ctx.currentTime);osc.frequency.setValueAtTime(659,ctx.currentTime+.1);osc.frequency.setValueAtTime(784,ctx.currentTime+.2);osc.frequency.setValueAtTime(1047,ctx.currentTime+.3);}
+    gain.gain.setValueAtTime(.3,ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+dur+.1);
+    osc.start(ctx.currentTime);osc.stop(ctx.currentTime+dur+.15);
+  }catch(e){}
+}
+
+// TTS for pet speech
+function speak(text){
+  if(!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='es-ES';u.rate=0.9;u.pitch=1.3;
+  const voices=window.speechSynthesis.getVoices();
+  const esp=voices.find(v=>v.lang.startsWith('es'));
+  if(esp)u.voice=esp;
+  window.speechSynthesis.speak(u);
+}
+
+function canRedeem(){
+  const r=S.redeemRule||'any';
+  if(r==='any')return true;
+  if(r==='friday')return isFriday();
+  if(r==='friday3pm'){const h=new Date().getHours();return isFriday()&&h>=15;}
+  return true;
+}
+function redeemRuleText(){
+  const r=S.redeemRule||'any';
+  if(r==='any')return'Los premios se pueden canjear cualquier día ✅';
+  if(r==='friday')return'Los premios se canjean solo los viernes 📅';
+  if(r==='friday3pm')return'Los premios se canjean los viernes a partir de las 3pm ⏰';
+  return'';
+}
+
+// ============================================================
+//  WIZARD
+// ============================================================
+const WIZ_STEPS=7;
+function showWizard(){
+  wizStep=1;
+  document.getElementById('wizOverlay').style.display='flex';
+  renderWizDots();renderWizStep();
+  // populate pts row
+  document.getElementById('wPtsRow').innerHTML=PTS_NAMES.map(n=>`<div class="wiz-emo ${n===wizPtsChoice?'sel':''}" onclick="pickWizPts('${n}')">${PTS_ICONS[n]} <div style="font-size:.6rem;font-weight:700">${n}</div></div>`).join('');
+  // populate currency row
+  const currs=['USD','PAB','EUR','COP','MXN','ARS','BRL','CLP','PEN','VES'];
+  const flags={'USD':'🇺🇸','PAB':'🇵🇦','EUR':'🇪🇺','COP':'🇨🇴','MXN':'🇲🇽','ARS':'🇦🇷','BRL':'🇧🇷','CLP':'🇨🇱','PEN':'🇵🇪','VES':'🇻🇪'};
+  document.getElementById('wCurrRow').innerHTML=currs.map(c=>`<div class="wiz-emo ${c===wizCurrChoice?'sel':''}" onclick="pickWizCurr('${c}')" style="font-size:1.5rem">${flags[c]}<div style="font-size:.55rem;font-weight:700">${c}</div></div>`).join('');
+}
+function renderWizDots(){
+  document.getElementById('wizDots').innerHTML=Array.from({length:WIZ_STEPS},(_,i)=>`<div class="wiz-dot ${i+1===wizStep?'act':''}"></div>`).join('');
+}
+function renderWizStep(){
+  document.querySelectorAll('.wiz-step').forEach((s,i)=>s.classList.toggle('act',i+1===wizStep));
+}
+function wizNext(){
+  // gather data per step
+  if(wizStep===2){const v=document.getElementById('wFamName').value.trim();if(v)S.familyName=v;}
+  if(wizStep===3){
+    const d=document.getElementById('wDadName').value.trim(),m=document.getElementById('wMomName').value.trim();
+    if(d)S.dadName=d;if(m)S.momName=m;
+  }
+  if(wizStep===4){S.ptsName=wizPtsChoice;}
+  if(wizStep===5){S.currency=wizCurrChoice;}
+  if(wizStep===6){const v=document.getElementById('wBedtime').value;if(v)S.bedtime=v;}
+  if(wizStep<WIZ_STEPS){wizStep++;renderWizDots();renderWizStep();}
+  else wizFinish();
+  save();playSound('tap');
+}
+function pickWizPts(n){
+  wizPtsChoice=n;
+  document.querySelectorAll('#wPtsRow .wiz-emo').forEach((el,i)=>el.classList.toggle('sel',PTS_NAMES[i]===n));
+  playSound('tap');
+}
+function pickWizCurr(c){
+  wizCurrChoice=c;
+  document.querySelectorAll('#wCurrRow .wiz-emo').forEach(el=>el.classList.remove('sel'));
+  event.currentTarget.classList.add('sel');
+  playSound('tap');
+}
+function wizFinish(){
+  S.wizardDone=true;save();
+  document.getElementById('wizOverlay').style.display='none';
+  document.getElementById('hdrLogo').textContent='⭐ '+S.familyName;
+  renderHome();toast('🎉 ¡Bienvenidos a '+S.familyName+'!');
+}
+
+// ============================================================
+//  NAV
+// ============================================================
+function go(p){
+  page=p;
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  const pages=['home','deberes','recompensas','mascota','crecer','familia','admin'];
+  document.querySelectorAll('.bni').forEach((n,i)=>n.classList.toggle('act',pages[i]===p));
+  playSound('tap');
+  if(p==='home')renderHome();
+  if(p==='deberes')renderDuties();
+  if(p==='recompensas')renderRewards();
+  if(p==='mascota')renderMascota();
+  if(p==='crecer')renderCrecer();
+  if(p==='familia')renderFamilia();
+  if(p==='admin')renderAdmin();
+  if(p==='bedtime')renderBedtime();
+}
+function sel(k){
+  kid=k;
+  document.querySelectorAll('.cc.liam').forEach(x=>x.classList.toggle('sel',k==='liam'));
+  document.querySelectorAll('.cc.consta').forEach(x=>x.classList.toggle('sel',k==='consta'));
+  if(page==='home')renderHome();
+  if(page==='deberes')renderDuties();
+  if(page==='recompensas')renderRewards();
+  if(page==='mascota')renderMascota();
+  if(page==='crecer')renderCrecer();
+  if(page==='familia')renderFamilia();
+}
+
+// ============================================================
+//  HOME
+// ============================================================
+function renderHome(){
+  const now=new Date();
+  const dayNames=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  document.getElementById('hDay').textContent=dayNames[now.getDay()];
+  document.getElementById('hDate').textContent=now.toLocaleDateString('es-PA',{day:'2-digit',month:'short',year:'numeric'});
+  document.getElementById('hdrLogo').textContent='⭐ '+(S.familyName||'Familia Rodríguez');
+  ['liam','consta'].forEach(k=>{
+    const a=getAge(KIDS[k].dob),ch=S.children[k];
+    document.getElementById('hage-'+k).textContent=a.years>0?`${a.years}a ${a.months%12}m`:`${a.months} meses`;
+    document.getElementById('hpts-'+k).textContent=ch.pts+' '+ptsIcon();
+    const pt=PET_TYPES.find(p=>p.id===ch.petType)||PET_TYPES[0];
+    const stageIdx=Math.min(3,PET_STAGES_XP.filter(x=>(ch.totalEarned||0)>=x).length-1);
+    document.getElementById('hav-'+k).textContent=pt.stages[stageIdx];
+  });
+  const ch=S.children[kid];
+  document.getElementById('hcname').textContent=KIDS[kid].name.split(' ')[0];
+  const tidx=Math.min(todayIdx(),4);
+  document.getElementById('wg').innerHTML=DAYS.map((d,i)=>`
+    <div class="dp ${i===tidx?'today':ch.wkPts[i]>0?'done':''}">
+      <div class="dn">${d.slice(0,3)}</div>
+      <div class="dv" style="color:${i===tidx?'var(--pur)':ch.wkPts[i]>0?'var(--green)':'#ccc'}">${ch.wkPts[i]||'—'}</div>
+    </div>`).join('');
+  const earned=ch.wkPts.reduce((a,b)=>a+Math.max(0,b),0);
+  const lost=Math.abs(ch.wkPts.reduce((a,b)=>a+Math.min(0,b),0));
+  document.getElementById('hEarned').textContent=earned;
+  document.getElementById('hLost').textContent=lost;
+  document.getElementById('hNet').textContent=ch.pts;
+  document.getElementById('hNetLbl').textContent=ptsIcon()+' '+ptsLbl();
+  document.getElementById('sBestLbl').textContent=ptsIcon()+' Mejor día';
+  document.getElementById('sStreak').textContent=ch.streak+' 🔥';
+  document.getElementById('sBest').textContent=ch.bestDay;
+  const total=S.duties.filter(d=>d.for==='both'||d.for===kid).length;
+  const comps=ch.comps[todayStr()]||{};
+  const done=Object.values(comps).filter(v=>v&&v!=='none').length;
+  document.getElementById('sComp').textContent=total?Math.round(done/total*100)+'%':'0%';
+  document.getElementById('sRed').textContent=ch.totalRed;
+  // Redeem button
+  const fb=document.getElementById('fridayBtn');
+  const ok=canRedeem();
+  fb.disabled=false;
+  if(ok) fb.textContent=`🎉 Canjear Premios`;
+  else if(S.redeemRule==='friday') fb.textContent='🔒 Solo los viernes';
+  else fb.textContent='🔒 Viernes a las 3pm';
+  // Bedtime banner
+  const[bh,bm]=(S.bedtime||'20:00').split(':').map(Number);
+  const nowH=now.getHours(),nowM=now.getMinutes();
+  const bedBanner=document.getElementById('bedBanner');
+  bedBanner.style.display=(nowH===bh&&Math.abs(nowM-bm)<=15)?'block':'none';
+}
+
+// ============================================================
+//  DUTIES
+// ============================================================
+function fcat(c){
+  catF=c;
+  document.querySelectorAll('.ch').forEach(x=>x.classList.remove('a'));
+  const map={all:'ca',higiene:'ci',estudio:'ce',hogar:'co',habitos:'cb2',social:'cs'};
+  document.querySelector('.ch.'+map[c])?.classList.add('a');
+  renderDuties();
+}
+function renderDuties(){
+  const today=todayStr(),comps=S.children[kid].comps[today]||{};
+  const duties=S.duties.filter(d=>(d.for==='both'||d.for===kid)&&(catF==='all'||d.cat===catF));
+  const list=document.getElementById('dutyList');
+  if(!duties.length){list.innerHTML='<div class="nodut">🎉 ¡No hay deberes aquí!</div>';return;}
+  list.innerHTML=duties.map(d=>`
+    <div class="dc cat-${d.cat} ${comps[d.id]==='full'?'cf':''}">
+      <div class="dh">
+        <div class="dn2">${comps[d.id]==='full'?'✅ ':comps[d.id]==='partial'?'🔶 ':comps[d.id]==='none'?'❌ ':''}${d.name}</div>
+        <span class="db ${catBadge(d.cat)}">${catLbl(d.cat)}</span>
+      </div>
+      <div class="dpts">Completo: <span>+${d.ptsFull}${ptsIcon()}</span> | Parcial: <span>+${d.ptsPart}</span> | Ninguno: <span style="color:var(--red)">${d.ptsNone}</span></div>
+      <div class="cbts">
+        <div class="cb full ${comps[d.id]==='full'?'sel':''}" onclick="setComp('${d.id}','full',event)">✅<span>+${d.ptsFull}${ptsIcon()}</span></div>
+        <div class="cb part ${comps[d.id]==='partial'?'sel':''}" onclick="setComp('${d.id}','partial',event)">🔶<span>+${d.ptsPart}${ptsIcon()}</span></div>
+        <div class="cb none ${comps[d.id]==='none'?'sel':''}" onclick="setComp('${d.id}','none',event)">❌<span>${d.ptsNone}${ptsIcon()}</span></div>
+      </div>
+    </div>`).join('');
+}
+function setComp(id,val,ev){
+  const today=todayStr();
+  if(!S.children[kid].comps[today])S.children[kid].comps[today]={};
+  const prev=S.children[kid].comps[today][id];
+  S.children[kid].comps[today][id]=val;
+  save();renderDuties();
+  if(val==='full'&&prev!=='full'){playSound('complete');if(ev){const r=ev.currentTarget.getBoundingClientRect();floatStar(r.left+r.width/2,r.top);}}
+  else playSound('tap');
+}
+function saveDay(){
+  const today=todayStr(),comps=S.children[kid].comps[today]||{};
+  const duties=S.duties.filter(d=>d.for==='both'||d.for===kid);
+  let pts=0;
+  duties.forEach(d=>{const v=comps[d.id];if(v==='full')pts+=d.ptsFull;else if(v==='partial')pts+=d.ptsPart;else if(v==='none')pts+=d.ptsNone;});
+  const ch=S.children[kid];
+  ch.wkPts[Math.min(todayIdx(),4)]=pts;
+  ch.pts=ch.wkPts.reduce((a,b)=>a+b,0);
+  ch.totalEarned=(ch.totalEarned||0)+Math.max(0,pts);
+  if(pts>ch.bestDay)ch.bestDay=pts;
+  ch.streak=pts>0?(ch.streak||0)+1:0;
+  save();pendingPts=pts;launchStarGame();
+}
+
+// ============================================================
+//  STAR GAME
+// ============================================================
+function launchStarGame(){
+  const name=KIDS[kid].name.split(' ')[0];
+  document.getElementById('stit').textContent=`${ptsIcon()} ¡${name} atrapa!`;
+  document.getElementById('ssub').textContent=pendingPts>0?`Ganaste ${pendingPts} ${ptsLbl()} hoy`:`¡Toca las ${ptsLbl()}!`;
+  document.getElementById('ssc').textContent='0 '+ptsIcon();
+  document.getElementById('stm').textContent='15 seg';
+  document.getElementById('sdone').style.display='none';
+  document.getElementById('sov').classList.add('show');
+  const canvas=document.getElementById('sc'),ctx=canvas.getContext('2d');
+  const W=Math.min(window.innerWidth-32,400);
+  canvas.width=W;canvas.height=320;
+  starSc=0;starTm=15;starStars=[];
+  if(starIv)clearInterval(starIv);if(starAnim)cancelAnimationFrame(starAnim);
+  function mk(){const sz=26+Math.random()*20;return{x:sz+Math.random()*(canvas.width-sz*2),y:sz+Math.random()*(canvas.height-sz*2),sz,vx:(Math.random()-.5)*1.2,vy:(Math.random()-.5)*1.2,born:Date.now(),ttl:1800+Math.random()*1200,em:Math.random()>.3?'⭐':'🌟'};}
+  for(let i=0;i<8;i++)starStars.push(mk());
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle='#0f0c29';ctx.fillRect(0,0,canvas.width,canvas.height);
+    const t=Date.now();ctx.fillStyle='rgba(255,255,255,.25)';
+    for(let i=0;i<18;i++){const x=(i*113+t/900)%canvas.width,y=(i*79+t/700*(i%3+1))%canvas.height;ctx.beginPath();ctx.arc(x,y,1,0,Math.PI*2);ctx.fill();}
+    const now=Date.now();
+    for(let i=starStars.length-1;i>=0;i--){
+      const s=starStars[i],age=now-s.born;
+      const op=Math.max(0,1-age/s.ttl);
+      s.x+=s.vx;s.y+=s.vy;
+      if(s.x<s.sz||s.x>canvas.width-s.sz)s.vx*=-1;
+      if(s.y<s.sz||s.y>canvas.height-s.sz)s.vy*=-1;
+      ctx.globalAlpha=op;ctx.font=`${s.sz}px serif`;ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(s.em,s.x,s.y);ctx.globalAlpha=1;
+      if(age>s.ttl){starStars.splice(i,1);starStars.push(mk());}
+    }
+  }
+  function loop(){draw();starAnim=requestAnimationFrame(loop);}loop();
+  starIv=setInterval(()=>{
+    starTm--;document.getElementById('stm').textContent=starTm>0?`${starTm} seg`:'¡Tiempo! 🎊';
+    if(starTm<=0){
+      clearInterval(starIv);cancelAnimationFrame(starAnim);draw();
+      const bonus=Math.floor(starSc/2);
+      if(bonus>0){S.children[kid].pts+=bonus;S.children[kid].totalEarned=(S.children[kid].totalEarned||0)+bonus;save();document.getElementById('ssc').textContent=`${starSc}${ptsIcon()} +${bonus} bonus!`;}
+      document.getElementById('sdone').style.display='block';playSound('reward');
+    }
+  },1000);
+  if(_sTap)canvas.removeEventListener('click',_sTap);
+  if(_sTouch)canvas.removeEventListener('touchstart',_sTouch);
+  function handleTap(ev){
+    if(starTm<=0)return;ev.preventDefault();
+    const rect=canvas.getBoundingClientRect(),sx=canvas.width/rect.width,sy=canvas.height/rect.height;
+    const touches=ev.touches?Array.from(ev.touches):[ev];
+    touches.forEach(t=>{
+      const cx=(t.clientX-rect.left)*sx,cy=(t.clientY-rect.top)*sy;
+      for(let i=starStars.length-1;i>=0;i--){const s=starStars[i];if(Math.hypot(cx-s.x,cy-s.y)<s.sz+6){starStars.splice(i,1);starSc++;document.getElementById('ssc').textContent=starSc+' '+ptsIcon();starStars.push(mk());playSound('star');break;}}
+    });
+  }
+  _sTap=handleTap;_sTouch=handleTap;
+  canvas.addEventListener('click',_sTap,{passive:false});
+  canvas.addEventListener('touchstart',_sTouch,{passive:false});
+}
+function closeStarGame(){
+  document.getElementById('sov').classList.remove('show');renderHome();
+  const name=KIDS[kid].name.split(' ')[0];
+  if(pendingPts>0)celeb('🎊','¡Día completado!',`${name} ganó ${pendingPts} ${ptsLbl()} hoy y atrapó ${starSc} en el juego. ¡Increíble! 🌟`);
+  else toast('💾 Día guardado');
+}
+
+// ============================================================
+//  REWARDS + PIGGY BANK
+// ============================================================
+function renderRewards(){
+  const ch=S.children[kid];
+  document.getElementById('rPts').textContent=ch.pts+' '+ptsIcon();
+  document.getElementById('rPtsLbl').textContent=ptsIcon()+' '+ptsLbl()+' disponibles';
+  // Piggy
+  const piggyMoney=((ch.piggy||0)*0.5).toFixed(2);
+  document.getElementById('piggyVal').textContent=currSym()+piggyMoney;
+  document.getElementById('piggySub').textContent=`${ch.piggy||0} ${ptsLbl()} ahorrados · Cada punto = ${currSym()}0.50`;
+  const ph=(ch.piggyHist||[]).slice(-5).reverse();
+  document.getElementById('piggyHist').innerHTML=ph.length?ph.map(h=>`<div class="piggy-hist-item"><span>${h.action==='save'?'💰 Ahorraste':'🛍️ Gastaste'} ${h.pts} ${ptsLbl()}</span><span style="color:var(--mut);font-size:.68rem">${fmtDate(h.date)}</span></div>`).join(''):'<div style="font-size:.72rem;color:var(--mut);font-weight:600">Aún no has ahorrado nada</div>';
+  // Rewards
+  const rewards=S.rewards.filter(r=>r.for==='both'||r.for===kid);
+  document.getElementById('rewardsGrid').innerHTML=rewards.map(r=>{
+    const can=ch.pts>=r.cost&&canRedeem();
+    const blocked=ch.pts>=r.cost&&!canRedeem();
+    return`<div class="rc ${ch.pts>=r.cost?'unl':'lck'}">${ch.pts<r.cost?'<div class="rlk">🔒</div>':''}
+      <div class="re">${r.emoji}</div><div class="rn">${r.name}</div>
+      <div class="rco">${ptsIcon()} ${r.cost}</div>
+      <button class="rbtn" ${!can?'disabled':''} onclick="redeemR('${r.id}')">
+        ${can?'¡Canjear! 🎉':blocked?'🔒 '+redeemRuleText().split(' ').slice(0,3).join(' '):'Faltan '+(r.cost-ch.pts)+ptsIcon()}
+      </button></div>`;
+  }).join('');
+  const rh=ch.rHist||[];
+  document.getElementById('rewardHist').innerHTML=rh.length?rh.slice().reverse().map(h=>`<div class="hi"><div><div class="hid">${h.emoji} ${h.name}</div><div class="hdd">${fmtDate(h.date)}</div></div><div class="hip">-${h.cost}${ptsIcon()}</div></div>`).join(''):'<div class="nodut" style="padding:10px">Sin canjes aún</div>';
+}
+function redeemR(rid){
+  const r=S.rewards.find(x=>x.id===rid),ch=S.children[kid];
+  if(!r||ch.pts<r.cost||!canRedeem())return;
+  ch.pts-=r.cost;ch.totalRed=(ch.totalRed||0)+1;
+  if(!ch.rHist)ch.rHist=[];
+  ch.rHist.push({name:r.name,emoji:r.emoji,cost:r.cost,date:todayStr()});
+  save();playSound('reward');celeb(r.emoji,'¡Premio Canjeado!',`${KIDS[kid].name.split(' ')[0]} ganó: ${r.name} 🎉`);renderRewards();
+}
+function fridayRedeem(){
+  if(!canRedeem()){toast('🔒 '+redeemRuleText());return;}
+  const ch=S.children[kid];
+  const av=S.rewards.filter(r=>(r.for==='both'||r.for===kid)&&ch.pts>=r.cost);
+  if(!av.length){toast('😅 Necesitas más '+ptsLbl());return;}
+  av.sort((a,b)=>b.cost-a.cost);redeemR(av[0].id);
+}
+function piggyDeposit(){
+  const ch=S.children[kid];
+  if(ch.pts<1){toast('Sin '+ptsLbl()+' para ahorrar');return;}
+  const amt=prompt(`¿Cuántos ${ptsLbl()} quieres ahorrar? (disponibles: ${ch.pts})`);
+  const n=parseInt(amt);
+  if(!n||n<1||n>ch.pts){toast('Cantidad inválida');return;}
+  ch.pts-=n;ch.piggy=(ch.piggy||0)+n;
+  if(!ch.piggyHist)ch.piggyHist=[];
+  ch.piggyHist.push({action:'save',pts:n,date:todayStr()});
+  save();playSound('reward');toast(`🐷 ¡Ahorraste ${n} ${ptsLbl()}!`);renderRewards();
+}
+function piggySpend(){
+  const ch=S.children[kid];
+  if(!ch.piggy||ch.piggy<1){toast('La alcancía está vacía');return;}
+  const money=((ch.piggy)*0.5).toFixed(2);
+  if(!confirm(`¿Gastar todos los ahorros? (${currSym()}${money})`))return;
+  if(!ch.piggyHist)ch.piggyHist=[];
+  ch.piggyHist.push({action:'spend',pts:ch.piggy,date:todayStr()});
+  ch.piggy=0;save();celeb('🛍️','¡Gastaste tus ahorros!',`${KIDS[kid].name.split(' ')[0]} gastó ${currSym()}${money} de su alcancía 🎉`);renderRewards();
+}
+
+// ============================================================
+//  MASCOTA
+// ============================================================
+function renderMascota(){renderPet();renderPetChooser();renderVoiceMsgs();}
+function getPetEmoji(k){
+  const ch=S.children[k],pt=PET_TYPES.find(p=>p.id===ch.petType)||PET_TYPES[0];
+  const si=Math.min(3,PET_STAGES_XP.filter(x=>(ch.totalEarned||0)>=x).length-1);
+  return{emoji:pt.stages[si],stageName:['Huevo','Cría','Joven','Adulto'][si],stageIdx:si,pt};
+}
+function renderPet(){
+  const ch=S.children[kid],earned=ch.totalEarned||0;
+  const{emoji,stageName,stageIdx,pt}=getPetEmoji(kid);
+  const nextXP=PET_STAGES_XP[Math.min(stageIdx+1,3)];
+  const curXP=PET_STAGES_XP[stageIdx];
+  const pct=stageIdx>=3?100:Math.min(100,Math.round((earned-curXP)/(nextXP-curXP)*100));
+  // Bloomy expression based on stage / mood
+  const bloomyMap = {0:'icons/bloomy-sleeping.png', 1:'icons/bloomy-default.png', 2:'icons/bloomy-proud.png', 3:'icons/bloomy-celebrating.png'};
+  const petEl = document.getElementById('petEm');
+  petEl.src = bloomyMap[stageIdx] || 'icons/bloomy-default.png';
+  document.getElementById('petNm').textContent=pt.name+' — Etapa: '+stageName;
+  document.getElementById('petMd').textContent=stageIdx===0?'¡Tócame para que nazca! 🤫':stageIdx>=3?'¡Soy totalmente adulto! 🏆':'¡Me cuidan muy bien! 🥰';
+  document.getElementById('petBadge').textContent=stageName;
+  document.getElementById('petBg').textContent=emoji;
+  document.getElementById('xpFill').style.width=pct+'%';
+  document.getElementById('xpLbl').textContent=stageIdx>=3?'¡Evolución completa! 🏆':`${earned-curXP} / ${nextXP-curXP} XP para siguiente etapa`;
+}
+function tapPet(ev){
+  const ch=S.children[kid];
+  const idx=(ch.petPhrase||0)%PET_PHRASES.length;ch.petPhrase=idx+1;save();
+  const phrase=PET_PHRASES[idx];
+  const bub=document.getElementById('petBub'),pet=document.getElementById('petEm');
+  bub.textContent=phrase;bub.classList.add('show');
+  pet.style.transform='scale(1.35) rotate(12deg)';
+  const prevSrc=pet.src;pet.src='icons/bloomy-celebrating.png';
+  setTimeout(()=>{pet.style.transform='scale(1) rotate(0)';pet.src=prevSrc;},600);
+  if(petBubTimer)clearTimeout(petBubTimer);
+  petBubTimer=setTimeout(()=>bub.classList.remove('show'),2200);
+  playSound('complete');
+  speak(phrase);
+  if(ev){const r=ev.currentTarget.getBoundingClientRect();floatStar(r.left+r.width/2,r.top+20);}
+}
+function renderPetChooser(){
+  const ch=S.children[kid];
+  document.getElementById('petChooser').innerHTML=PET_TYPES.map(pt=>`
+    <div class="pet-opt ${pt.id===ch.petType?'sel':''}" onclick="pickPet('${pt.id}')">
+      <div class="pet-opt-em">${pt.stages[0]}→${pt.stages[3]}</div>
+      <div class="pet-opt-nm">${pt.name}</div>
+    </div>`).join('');
+}
+function pickPet(id){
+  S.children[kid].petType=id;save();playSound('tap');renderPet();renderPetChooser();toast('🐾 ¡Mascota cambiada!');}
+
+// ============================================================
+//  VOICE MESSAGES
+// ============================================================
+function renderVoiceMsgs(){
+  const msgs=(S.children[kid].voiceMsgs||[]).slice().reverse();
+  document.getElementById('voiceMsgs').innerHTML=msgs.length?msgs.map((m,i)=>`
+    <div class="voice-msg">
+      <button class="voice-play" onclick="playVoice(${i})">▶</button>
+      <div class="voice-info">
+        <div class="voice-lbl">🎙️ Mensaje ${msgs.length-i}</div>
+        <div class="voice-date">${fmtDate(m.date)}</div>
+      </div>
+      <button class="voice-del" onclick="delVoice(${i})">🗑️</button>
+    </div>`)
+    .join(''):'<div style="font-size:.78rem;color:var(--mut);font-weight:600;text-align:center;padding:10px">Mantén presionado el botón para grabar</div>';
+}
+async function startRec(){
+  if(isRecording)return;
+  try{
+    const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+    mediaRecorder=new MediaRecorder(stream);
+    audioChunks=[];
+    mediaRecorder.ondataavailable=e=>audioChunks.push(e.data);
+    mediaRecorder.onstop=()=>{
+      const blob=new Blob(audioChunks,{type:'audio/webm'});
+      const reader=new FileReader();
+      reader.onload=()=>{
+        if(!S.children[kid].voiceMsgs)S.children[kid].voiceMsgs=[];
+        S.children[kid].voiceMsgs.push({data:reader.result,date:todayStr()});
+        save();renderVoiceMsgs();toast('🎙️ ¡Mensaje guardado!');
+      };
+      reader.readAsDataURL(blob);
+      stream.getTracks().forEach(t=>t.stop());
+    };
+    mediaRecorder.start();isRecording=true;
+    document.getElementById('voiceBtn').classList.add('recording');
+    document.getElementById('voiceBtn').textContent='⏹️';
+    document.getElementById('recStatus').textContent='🔴 Grabando... suelta para guardar';
+    playSound('tap');
+  }catch(e){toast('⚠️ No se pudo acceder al micrófono');}
+}
+function stopRec(){
+  if(!isRecording||!mediaRecorder)return;
+  mediaRecorder.stop();isRecording=false;
+  document.getElementById('voiceBtn').classList.remove('recording');
+  document.getElementById('voiceBtn').textContent='🎤';
+  document.getElementById('recStatus').textContent='';
+}
+function playVoice(idx){
+  const msgs=(S.children[kid].voiceMsgs||[]).slice().reverse();
+  if(!msgs[idx])return;
+  const audio=new Audio(msgs[idx].data);audio.play();playSound('tap');
+}
+function delVoice(idx){
+  const msgs=(S.children[kid].voiceMsgs||[]).slice().reverse();
+  const orig=S.children[kid].voiceMsgs;
+  const origIdx=orig.length-1-idx;
+  orig.splice(origIdx,1);save();renderVoiceMsgs();toast('🗑️ Mensaje eliminado');
+}
+
+async function loadAiDev(childKey, ageMonths, ageLabel){
+  const ch = KIDS[childKey];
+  const btn = document.querySelector('#aiCard .dev-ai-btn');
+  if(btn){ btn.disabled=true; btn.textContent='⏳ Generando análisis...'; }
+  try {
+    const res = await fetch('/.netlify/functions/crecer', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        childName: ch.name.split(' ')[0],
+        ageMonths: parseInt(ageMonths),
+        ageLabel,
+        gender: childKey==='liam' ? 'niño' : 'niña'
+      })
+    });
+    if(!res.ok) throw new Error('Error '+res.status);
+    const dev = await res.json();
+    const html = buildDevHTML(dev, ch, ageLabel);
+    if(!S.crecerCache) S.crecerCache={};
+    S.crecerCache[childKey+'_'+ageMonths] = html;
+    save();
+    const profCard = document.getElementById('crecerContent').innerHTML.split('<div id="aiCard"')[0];
+    document.getElementById('crecerContent').innerHTML = profCard + html;
+  } catch(err) {
+    const card = document.getElementById('aiCard');
+    if(card) card.innerHTML=`
+      <div style="color:white">
+        <div style="font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;margin-bottom:6px">🤖 Análisis con IA</div>
+        <div style="font-size:.78rem;opacity:.8;margin-bottom:10px">No se pudo conectar. Verifica que la app esté en Netlify con la API key configurada.</div>
+        <button class="dev-ai-btn" onclick="loadAiDev('${childKey}','${ageMonths}','${ageLabel}')">🔄 Reintentar</button>
+      </div>`;
+  }
+}
+
+function buildDevHTML(dev, ch, ageLabel){
+  const secs=[
+    {k:'physical', i:'💪', t:'Desarrollo Físico',    c:'#4FC3F7'},
+    {k:'cognitive',i:'🧠', t:'Desarrollo Cognitivo', c:'#A78BFA'},
+    {k:'emotional',i:'❤️', t:'Desarrollo Emocional', c:'#F87171'},
+    {k:'language', i:'💬', t:'Lenguaje',             c:'#34D399'},
+  ];
+  let html='';
+  secs.forEach(s=>{
+    const items=(dev[s.k]||[]);
+    if(!items.length) return;
+    const done=items.filter(x=>x.done).length, pct=Math.round(done/items.length*100);
+    html+=`<div class="dev-card">
+      <div class="dc-hdr"><div class="dc-ic">${s.i}</div><div><div class="dc-tit">${s.t}</div><div class="dc-sub">${done}/${items.length} hitos</div></div></div>
+      <div class="prog-wrap"><div class="prog-fill" style="width:${pct}%;background:linear-gradient(90deg,${s.c},${s.c}88)"></div></div>
+      <div class="prog-lbl"><span>Inicio</span><span>${pct}%</span></div>
+      <div class="ms-list" style="margin-top:7px">
+        ${items.map(m=>`<div class="ms ${m.done?'done':m.current?'cur':''}">
+          <div class="ms-ic">${m.done?'✅':m.current?'🎯':'⭕'}</div>
+          <div class="ms-tx">${m.label}</div>
+        </div>`).join('')}
+      </div></div>`;
+  });
+  if(dev.activities?.length){
+    html+=`<div class="dev-card" style="background:linear-gradient(135deg,#fffbeb,#fff9f0)">
+      <div class="dc-hdr"><div class="dc-ic">💡</div><div><div class="dc-tit">Actividades Recomendadas</div><div class="dc-sub">Para ${ch.name.split(' ')[0]} — ${ageLabel}</div></div></div>
+      <div class="ms-list">${dev.activities.map(a=>`<div class="ms"><div class="ms-ic">${a.icon}</div><div class="ms-tx">${a.text}</div></div>`).join('')}</div>
+    </div>`;
+  }
+  if(dev.tip){
+    html+=`<div class="dev-card" style="background:linear-gradient(135deg,#667eea11,#f093fb11);border:2px solid #e8d5ff">
+      <div class="dc-hdr"><div class="dc-ic">💎</div><div><div class="dc-tit">Consejo para Papá y Mamá</div></div></div>
+      <div style="font-size:.82rem;font-weight:600;line-height:1.5">${dev.tip}</div>
+    </div>`;
+  }
+  html+=`<div style="text-align:center;font-size:.68rem;color:var(--mut);font-weight:600;padding:8px 0">
+    Basado en estándares OMS · CDC · AAP · Generado con IA ✨<br>
+    <span style="cursor:pointer;color:#7C3AED;font-weight:700" onclick="clearCrecerCache()">🔄 Actualizar análisis</span>
+  </div>`;
+  return html;
+}
+function clearCrecerCache(){ S.crecerCache={}; save(); renderCrecer(); toast('🔄 Caché limpiado'); }
+  liam:{
+    physical:[{l:'Sostiene la cabeza',d:true},{l:'Se sienta solo',d:true},{l:'Gatea',d:true},{l:'Primeros pasos',d:true},{l:'Sube escaleras con ayuda',d:true},{l:'Corre y salta',d:true},{l:'Pedalea triciclo',d:false,c:true},{l:'Salta con ambos pies',d:false}],
+    cognitive:[{l:'Reconoce voces',d:true},{l:'Primeras palabras',d:true},{l:'~10-20 palabras',d:true},{l:'Frases de 2 palabras',d:true},{l:'Vocabulario ~200 palabras',d:false,c:true},{l:'Oraciones completas',d:false},{l:'Pregunta ¿Por qué?',d:false}],
+    emotional:[{l:'Sonrisa social',d:true},{l:'Sentido de posesión',d:true},{l:'Rabietas normales',d:true},{l:'Empatía básica',d:false,c:true},{l:'Juego cooperativo',d:false}],
+    activities:[{i:'🧩',t:'Rompecabezas 3-6 piezas'},{i:'🖍️',t:'Colorear con crayones gruesos'},{i:'📖',t:'Cuentos con imágenes grandes'},{i:'🎵',t:'Canciones con movimientos'},{i:'🧱',t:'Construir torres con bloques'}]
+  },
+  consta:{
+    physical:[{l:'Corre y salta',d:true},{l:'Triciclo y equilibrio',d:true},{l:'Salta en un pie',d:true},{l:'Se amarra los zapatos',d:true},{l:'Bicicleta sin rueditas',d:false,c:true},{l:'Deportes en equipo',d:false}],
+    cognitive:[{l:'Cuenta hasta 10',d:true},{l:'Reconoce letras',d:true},{l:'Escribe su nombre',d:true},{l:'Lectura emergente',d:true},{l:'Suma y resta simples',d:false,c:true},{l:'Lee palabras completas',d:false}],
+    emotional:[{l:'Juego cooperativo',d:true},{l:'Regula emociones básicas',d:true},{l:'Empatía desarrollada',d:true},{l:'Autoconcepto positivo',d:true},{l:'Resolución de conflictos',d:false,c:true}],
+    activities:[{i:'📚',t:'Lectura diaria'},{i:'🎨',t:'Dibujo libre y manualidades'},{i:'🔢',t:'Juegos matemáticos'},{i:'🎭',t:'Juego de roles'},{i:'✂️',t:'Recortar y pegar'}]
+  }
+};
+// ============================================================
+//  CRECER
+// ============================================================
+function renderCrecer(){
+  const ch=KIDS[kid], age=getAge(ch.dob);
+  const ageMonths=age.months;
+  const ageLabel=age.years>0?`${age.years} año${age.years>1?'s':''} y ${age.months%12} mes${age.months%12!==1?'es':''}`:`${age.months} meses`;
+  const cacheKey=kid+'_'+ageMonths;
+  const profileCard=`
+    <div class="dev-card" style="text-align:center;background:linear-gradient(135deg,#f3e8ff,#fde8f3)">
+      <div style="font-size:2.2rem">${ch.emoji}</div>
+      <div style="font-family:'Baloo 2',cursive;font-weight:800;font-size:.98rem;margin:3px 0">${ch.name}</div>
+      <div style="color:var(--mut);font-weight:700;font-size:.78rem">🎂 ${ageLabel}</div>
+      <div style="margin-top:6px;font-size:.74rem;font-weight:700;background:white;border-radius:10px;display:inline-block;padding:4px 10px">📅 Próx. cumpleaños: ${nextBday(ch.dob)}</div>
+    </div>`;
+  if(S.crecerCache&&S.crecerCache[cacheKey]){
+    document.getElementById('crecerContent').innerHTML=profileCard+S.crecerCache[cacheKey];return;
+  }
+  const data=DEV_DATA[kid];
+  const secs=[{k:'physical',i:'💪',t:'Desarrollo Físico',c:'#4FC3F7'},{k:'cognitive',i:'🧠',t:'Desarrollo Cognitivo',c:'#A78BFA'},{k:'emotional',i:'❤️',t:'Desarrollo Emocional',c:'#F87171'}];
+  let html=profileCard+`
+    <div id="aiCard" style="background:linear-gradient(135deg,#1a1a2e,#2d1b69);border-radius:var(--rad);padding:16px;margin-bottom:12px;color:white;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,#667eea44,transparent);border-radius:50%"></div>
+      <div style="font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;margin-bottom:4px">🤖 Análisis Personalizado con IA</div>
+      <div style="font-size:.75rem;opacity:.8;font-weight:600;margin-bottom:12px">Hitos según estándares OMS/CDC/AAP para la edad exacta de ${ch.name.split(' ')[0]}</div>
+      <button onclick="loadAiDev('${kid}','${ageMonths}','${ageLabel}')" style="padding:9px 20px;background:linear-gradient(135deg,#667eea,#f093fb);color:white;border:none;border-radius:12px;font-family:'Baloo 2',cursive;font-size:.88rem;font-weight:700;cursor:pointer" class="dev-ai-btn">✨ Generar análisis</button>
+    </div>`;
+  secs.forEach(s=>{
+    const items=data[s.k],done=items.filter(x=>x.d).length,pct=Math.round(done/items.length*100);
+    html+=`<div class="dev-card"><div class="dc-hdr"><div class="dc-ic">${s.i}</div><div><div class="dc-tit">${s.t}</div><div class="dc-sub">${done}/${items.length} hitos</div></div></div>
+      <div class="prog-wrap"><div class="prog-fill" style="width:${pct}%;background:linear-gradient(90deg,${s.c},${s.c}88)"></div></div>
+      <div class="prog-lbl"><span>Inicio</span><span>${pct}%</span></div>
+      <div class="ms-list" style="margin-top:7px">${items.map(m=>`<div class="ms ${m.d?'done':m.c?'cur':''}"><div class="ms-ic">${m.d?'✅':m.c?'🎯':'⭕'}</div><div class="ms-tx">${m.l}</div></div>`).join('')}</div>
+    </div>`;
+  });
+  html+=`<div class="dev-card" style="background:linear-gradient(135deg,#fffbeb,#fff9f0)">
+    <div class="dc-hdr"><div class="dc-ic">💡</div><div><div class="dc-tit">Actividades Recomendadas</div></div></div>
+    <div class="ms-list">${data.activities.map(a=>`<div class="ms"><div class="ms-ic">${a.i}</div><div class="ms-tx">${a.t}</div></div>`).join('')}</div>
+  </div>`;
+  document.getElementById('crecerContent').innerHTML=html;
+}
+
+// ============================================================
+//  FAMILIA
+// ============================================================
+let prRatings={dad:{mood:null,stars:0},mom:{mood:null,stars:0}};
+function renderFamilia(){
+  const kidName=KIDS[kid].name.split(' ')[0];
+  const dadName=S.dadName||'Papá',momName=S.momName||'Mamá';
+  const ch=S.children[kid];
+  const ratings=ch.parentRatings||[];
+  const todayRating=ratings.find(r=>r.date===todayStr());
+  prRatings={dad:{mood:todayRating?.dadMood??null,stars:todayRating?.dadStars??0},mom:{mood:todayRating?.momMood??null,stars:todayRating?.momStars??0}};
+  if(!S.parentPts)S.parentPts={dad:0,mom:0};
+
+  document.getElementById('familiaContent').innerHTML=`
+    <div class="pr-wrap">
+      <div class="pr-title">¿Cómo estuvo hoy? 🌟</div>
+      <div class="pr-sub">${kidName} califica a ${dadName} y ${momName}</div>
+      <div class="pr-parents" id="prParents">
+        ${buildParentCard('dad',dadName,'👨',prRatings.dad)}
+        ${buildParentCard('mom',momName,'👩',prRatings.mom)}
+      </div>
+      ${!todayRating
+        ?`<button class="pr-save" onclick="saveParentRating()">💾 Guardar calificación de hoy</button>`
+        :`<div style="text-align:center;font-size:.8rem;font-weight:800;color:var(--green);margin-top:4px">✅ ¡Calificación guardada!</div>`
+      }
+    </div>
+    <div class="st">🏅 ${ptsLbl()} de los Padres</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+      <div class="card" style="text-align:center"><div style="font-size:1.8rem">👨</div><div style="font-family:'Baloo 2',cursive;font-weight:800;font-size:.9rem">${dadName}</div><div style="font-family:'Baloo 2',cursive;font-size:1.6rem;font-weight:800;color:var(--pur)">${S.parentPts.dad||0}${ptsIcon()}</div></div>
+      <div class="card" style="text-align:center"><div style="font-size:1.8rem">👩</div><div style="font-family:'Baloo 2',cursive;font-weight:800;font-size:.9rem">${momName}</div><div style="font-family:'Baloo 2',cursive;font-size:1.6rem;font-weight:800;color:var(--pur)">${S.parentPts.mom||0}${ptsIcon()}</div></div>
+    </div>
+    <div class="st">📊 Historial</div>
+    ${buildFamiliaHist(ch,dadName,momName)}`;
+}
+function buildParentCard(who,name,em,rat){
+  return`<div class="pr-parent ${rat.stars>0?'rated':''}" id="pcard-${who}">
+    <div class="pr-pname">${em} ${name}</div>
+    <div class="pr-mrow">${MOODS.map((m,i)=>`<div class="pr-mood ${rat.mood===i?'sel':''}" onclick="setMood('${who}',${i})">${m}</div>`).join('')}</div>
+    <div class="pr-stars">${[1,2,3,4,5].map(n=>`<div class="pr-star" onclick="setStars('${who}',${n})">${n<=(rat.stars||0)?'⭐':'☆'}</div>`).join('')}</div>
+    <div class="pr-note" id="pnote-${who}">${rat.stars>0?(MOOD_LABELS[rat.mood??2]+' · '+rat.stars+'/5'):'Toca para calificar'}</div>
+  </div>`;
+}
+function buildFamiliaHist(ch,dadName,momName){
+  const ratings=(ch.parentRatings||[]).slice().reverse().slice(0,6);
+  if(!ratings.length)return'<div class="nodut" style="padding:10px">Sin calificaciones aún</div>';
+  return ratings.map(r=>`<div class="pr-hist-item">
+    <div><div style="font-weight:800;font-size:.8rem">${fmtDate(r.date)}</div>
+    <div style="font-size:.68rem;color:var(--mut);font-weight:600">👨${dadName}: ${'⭐'.repeat(r.dadStars||0)} ${MOODS[r.dadMood??2]} &nbsp; 👩${momName}: ${'⭐'.repeat(r.momStars||0)} ${MOODS[r.momMood??2]}</div></div>
+  </div>`).join('');
+}
+function setMood(who,idx){
+  prRatings[who].mood=idx;
+  document.querySelectorAll(`#pcard-${who} .pr-mood`).forEach((el,i)=>el.classList.toggle('sel',i===idx));
+  document.getElementById('pnote-'+who).textContent=MOOD_LABELS[idx]+(prRatings[who].stars?' · '+prRatings[who].stars+'/5':'');
+  playSound('tap');
+}
+function setStars(who,n){
+  prRatings[who].stars=n;
+  document.querySelectorAll(`#pcard-${who} .pr-star`).forEach((el,i)=>el.textContent=i<n?'⭐':'☆');
+  document.getElementById('pnote-'+who).textContent=(MOOD_LABELS[prRatings[who].mood??2])+' · '+n+'/5';
+  playSound('tap');
+}
+function saveParentRating(){
+  const dad=prRatings.dad,mom=prRatings.mom;
+  if(!dad.stars&&!mom.stars){toast('⚠️ Califica a alguien primero');return;}
+  const ch=S.children[kid];
+  if(!ch.parentRatings)ch.parentRatings=[];
+  ch.parentRatings=ch.parentRatings.filter(r=>r.date!==todayStr());
+  ch.parentRatings.push({date:todayStr(),dadMood:dad.mood??2,dadStars:dad.stars,momMood:mom.mood??2,momStars:mom.stars});
+  if(!S.parentPts)S.parentPts={dad:0,mom:0};
+  if(dad.stars)S.parentPts.dad=(S.parentPts.dad||0)+dad.stars;
+  if(mom.stars)S.parentPts.mom=(S.parentPts.mom||0)+mom.stars;
+  save();playSound('reward');
+  celeb('🌟','¡Gracias '+KIDS[kid].name.split(' ')[0]+'!',`Tu opinión cuenta mucho para ${S.dadName||'Papá'} y ${S.momName||'Mamá'} 💕`);
+  renderFamilia();
+}
+
+// ============================================================
+//  BEDTIME
+// ============================================================
+function renderBedtime(){
+  const now=new Date();
+  document.getElementById('bedClock').textContent=now.toLocaleTimeString('es-PA',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('bedTimeInput').value=S.bedtime||'20:00';
+  document.getElementById('bedSongs').innerHTML=BED_SONGS.map(s=>`
+    <div class="bed-song" onclick="openSong('${s.url}')">
+      <div class="bed-song-ic">${s.ic}</div>
+      <div class="bed-song-info"><div class="bed-song-nm">${s.name}</div><div class="bed-song-sub">${s.sub}</div></div>
+      <div class="bed-play-ic">▶️</div>
+    </div>`).join('');
+}
+function openSong(url){window.open(url,'_blank');playSound('tap');}
+function saveBedtime(){S.bedtime=document.getElementById('bedTimeInput').value;save();toast('🌙 Hora guardada: '+S.bedtime);}
+
+// ============================================================
+//  ADMIN
+// ============================================================
+function renderAdmin(){
+  document.getElementById('ptsCurrentLbl').textContent=ptsLbl()+' '+ptsIcon();
+  document.getElementById('ptsOpts').innerHTML=PTS_NAMES.map(n=>`<div class="pts-opt ${n===S.ptsName?'sel':''}" onclick="quickPtsName('${n}')">${PTS_ICONS[n]} ${n}</div>`).join('');
+  document.getElementById('dadNameInput').value=S.dadName||'Papá';
+  document.getElementById('momNameInput').value=S.momName||'Mamá';
+  document.getElementById('famNameInput').value=S.familyName||'Familia Rodríguez';
+  document.getElementById('currencyInput').value=S.currency||'PAB';
+  // redeem rule
+  const r=S.redeemRule||'any';
+  document.getElementById('rAny').checked=r==='any';
+  document.getElementById('rFri').checked=r==='friday';
+  document.getElementById('rFriPm').checked=r==='friday3pm';
+  document.getElementById('redeemRuleLbl').textContent=redeemRuleText();
+  renderDutyAdmin();renderRewardAdmin();
+}
+function quickPtsName(n){S.ptsName=n;save();renderAdmin();toast('✨ '+n+'!');playSound('tap');}
+function setPtsName(){const v=document.getElementById('ptsCustom').value.trim();if(!v){toast('⚠️ Escribe un nombre');return;}S.ptsName=v;save();document.getElementById('ptsCustom').value='';renderAdmin();toast('✨ ¡Actualizado!');}
+function saveConfig(){
+  S.dadName=document.getElementById('dadNameInput').value.trim()||'Papá';
+  S.momName=document.getElementById('momNameInput').value.trim()||'Mamá';
+  S.familyName=document.getElementById('famNameInput').value.trim()||'Familia Rodríguez';
+  S.currency=document.getElementById('currencyInput').value;
+  save();document.getElementById('hdrLogo').textContent='⭐ '+S.familyName;toast('💾 ¡Guardado!');
+}
+function saveRedeemRule(){
+  const r=document.querySelector('input[name="redeemRule"]:checked')?.value||'any';
+  S.redeemRule=r;save();document.getElementById('redeemRuleLbl').textContent=redeemRuleText();toast('💾 Regla actualizada');
+}
+function renderDutyAdmin(){
+  document.getElementById('dutyAdminList').innerHTML=S.duties.map((d,i)=>`
+    <div class="ai"><div><div class="ain">${d.name} <span class="chip">${catLbl(d.cat)}</span></div>
+    <div class="aip">+${d.ptsFull}/+${d.ptsPart}/${d.ptsNone} | ${d.for==='both'?'Ambos':d.for==='liam'?'Liam':'Constanza'}</div></div>
+    <button class="bdel" onclick="delDuty(${i})">✕</button></div>`).join('');}
+function renderRewardAdmin(){
+  document.getElementById('rewardAdminList').innerHTML=S.rewards.map((r,i)=>`
+    <div class="ai"><div><div class="ain">${r.emoji} ${r.name}</div>
+    <div class="aip">${ptsIcon()}${r.cost} | ${r.for==='both'?'Ambos':r.for==='liam'?'Liam':'Constanza'}</div></div>
+    <button class="bdel" onclick="delReward(${i})">✕</button></div>`).join('');}
+function addDuty(){
+  const name=document.getElementById('dName').value.trim();if(!name){toast('⚠️ Escribe el nombre');return;}
+  S.duties.push({id:'d'+Date.now(),name,cat:document.getElementById('dCat').value,ptsFull:parseInt(document.getElementById('dFull').value)||10,ptsPart:parseInt(document.getElementById('dPart').value)||5,ptsNone:parseInt(document.getElementById('dNone').value)||0,for:document.getElementById('dFor').value});
+  save();toast('✅ Agregado');['dName','dFull','dPart','dNone'].forEach(id=>document.getElementById(id).value='');renderDutyAdmin();}
+function delDuty(i){S.duties.splice(i,1);save();toast('🗑️ Eliminado');renderDutyAdmin();}
+function addReward(){
+  const name=document.getElementById('rName').value.trim();if(!name){toast('⚠️ Escribe el nombre');return;}
+  S.rewards.push({id:'r'+Date.now(),name,emoji:document.getElementById('rEmoji').value.trim()||'🎁',cost:parseInt(document.getElementById('rCost').value)||50,for:document.getElementById('rFor').value});
+  save();toast('🎁 Agregado');['rName','rEmoji','rCost'].forEach(id=>document.getElementById(id).value='');renderRewardAdmin();}
+function delReward(i){S.rewards.splice(i,1);save();toast('🗑️ Eliminado');renderRewardAdmin();}
+function showHist(child){
+  const ch=S.children[child];
+  document.getElementById('histList').innerHTML=(!ch.hist||!ch.hist.length)
+    ?`<div class="nodut" style="padding:10px">Sin historial para ${KIDS[child].name.split(' ')[0]}</div>`
+    :ch.hist.slice().reverse().map(h=>`<div class="hi"><div><div class="hid">${KIDS[child].emoji} Semana ${fmtDate(h.weekStart)}</div><div class="hdd">${h.details}</div></div><div class="hip">${h.total>=0?'+':''}${h.total}${ptsIcon()}</div></div>`).join('');}
+function resetWeek(){
+  if(!confirm('¿Resetear semana?'))return;
+  ['liam','consta'].forEach(k=>{
+    const ch=S.children[k];if(!ch.hist)ch.hist=[];
+    ch.hist.push({weekStart:todayStr(),total:ch.wkPts.reduce((a,b)=>a+b,0),details:ch.wkPts.map((p,i)=>DAYS[i]+':'+p).join(' | ')});
+    ch.wkPts=[0,0,0,0,0];ch.pts=0;ch.comps={};
+  });save();toast('🔄 ¡Nueva semana!');renderHome();}
+function resetAll(){
+  if(!confirm('⚠️ ¿Borrar TODO? Irreversible.'))return;
+  if(!confirm('¿Seguro? Se perderán todos los datos.'))return;
+  ['liam','consta'].forEach(k=>{
+    S.children[k]={...defaultState().children[k],petType:S.children[k].petType};
+  });
+  S.parentPts={dad:0,mom:0};
+  save();toast('🗑️ Reset completo');renderHome();renderAdmin();}
+
+// ============================================================
+//  INIT
+// ============================================================
+// Pre-load speech voices
+if(window.speechSynthesis)window.speechSynthesis.getVoices();
+
+// Check wizard
+if(!S.wizardDone){
+  showWizard();
+} else {
+  document.getElementById('hdrLogo').textContent='⭐ '+(S.familyName||'Familia Rodríguez');
+  renderHome();
+}
+
+// Register Service Worker for PWA
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('/sw.js')
+      .then(()=>console.log('SW registered'))
+      .catch(e=>console.log('SW error:',e));
+  });
+}
+</script>
+</body>
+</html>

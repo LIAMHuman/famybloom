@@ -1,0 +1,19 @@
+# Android
+android/android.keystore
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/*.apk
+android/*.aab
+android/*.idsig
+android/hs_err_pid*.log
+android/manifest-checksum.txt
+
+# Web / Netlify
+web/.netlify/
+web/node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
