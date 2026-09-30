@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#5f27cd">
+<title>Abecedario de Constanza</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(168,85,247,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(236,72,153,0.08) 0%, transparent 50%),
+      linear-gradient(135deg, #F5F0FF 0%, #FFF5FA 100%);
+    background-attachment: fixed;
+    font-family: 'Baloo 2', 'Nunito', 'Trebuchet MS', sans-serif;
+    padding: 70px 16px 48px;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  /* Header FamyBloom unificado */
+  .fb-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    background: linear-gradient(135deg, #7c3aed, #a855f7, #ec4899);
+    color: white;
+    padding: 12px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 4px 14px rgba(124,58,237,0.25);
+  }
+  .fb-header-title {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 17px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .fb-back-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 13px;
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+  }
+  .fb-back-btn:active { transform: scale(0.95); }
+
+  header { text-align: center; margin-bottom: 20px; }
+  h1 {
+    font-size: clamp(40px, 9vw, 76px);
+    margin: 0 0 4px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .sub-inline {
+    display: block;
+    font-size: clamp(20px, 4vw, 32px);
+    color: #7c3aed;
+    margin-top: 6px;
+  }
+  .subtitulo {
+    font-size: clamp(15px, 3vw, 20px);
+    color: #576574;
+    margin: 8px 0 16px;
+    font-weight: 600;
+  }
+
+  .controles { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .switcher {
+    display: inline-flex;
+    gap: 8px;
+    background: #fff;
+    padding: 6px;
+    border-radius: 999px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  }
+  .lang-btn {
+    border: none;
+    background: transparent;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #576574;
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+  .lang-btn.activo {
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(124,58,237,0.4);
+  }
+
+  .cantar-btn {
+    border: none;
+    background: linear-gradient(135deg, #f59e0b 0%, #ec4899 100%);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 19px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: 0 8px 22px rgba(236,72,153,0.4);
+    transition: transform 0.15s ease;
+  }
+  .cantar-btn:active { transform: scale(0.95); }
+  .cantar-btn.cantando { animation: latido 0.6s ease-in-out infinite; }
+  @keyframes latido {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 14px;
+    max-width: 900px;
+    margin: 22px auto 0;
+  }
+  .tarjeta {
+    border: none;
+    border-radius: 24px;
+    padding: 18px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    color: #fff;
+    font-family: inherit;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    aspect-ratio: 1 / 1.1;
+    justify-content: center;
+    animation: pop 0.4s cubic-bezier(0.34,1.56,0.64,1) backwards;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .tarjeta:active { transform: scale(0.94); }
+  .tarjeta.brillando {
+    transform: scale(1.12);
+    box-shadow: 0 0 0 5px #fff, 0 12px 30px rgba(0,0,0,0.3);
+    z-index: 2;
+  }
+  @media (hover:hover) {
+    .tarjeta:hover {
+      transform: translateY(-6px) scale(1.04) rotate(-1deg);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.2);
+    }
+  }
+  .letra-grande {
+    font-size: clamp(34px, 7vw, 48px);
+    font-weight: 800;
+    line-height: 1;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  }
+  .emoji { font-size: clamp(28px, 6vw, 40px); line-height: 1; }
+  .palabra { font-size: clamp(13px, 2.6vw, 16px); font-weight: 700; }
+
+  @keyframes pop {
+    from { opacity: 0; transform: scale(0.5) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 50;
+  }
+  .overlay.abierto { display: flex; }
+  .modal {
+    border-radius: 36px;
+    padding: 36px 28px 28px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    max-width: 360px;
+    width: 100%;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    animation: bounceIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes bounceIn {
+    from { opacity: 0; transform: scale(0.6); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .cerrar {
+    position: absolute;
+    top: 14px; right: 14px;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .modal-letra {
+    font-size: clamp(70px, 18vw, 110px);
+    font-weight: 800;
+    line-height: 1;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  .modal-emoji { font-size: clamp(56px, 14vw, 88px); margin: 4px 0 18px; }
+  .modal-palabras { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+  .palabra-btn {
+    border: none;
+    background: rgba(255,255,255,0.95);
+    color: #2d3436;
+    padding: 14px 18px;
+    border-radius: 18px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  }
+  .palabra-btn:active { transform: scale(0.95); }
+  .repetir {
+    border: 2px solid rgba(255,255,255,0.6);
+    background: transparent;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .aviso {
+    text-align: center;
+    color: #8395a7;
+    font-size: 13px;
+    margin-top: 24px;
+    font-weight: 600;
+  }
+
+  .letra-titulo { display: inline-block; animation: wiggle 2.5s ease-in-out infinite; }
+  .l1 { color: #7c3aed; animation-delay: 0s; }
+  .l2 { color: #a855f7; animation-delay: 0.2s; }
+  .l3 { color: #ec4899; animation-delay: 0.4s; }
+  @keyframes wiggle {
+    0%,100% { transform: rotate(0deg) translateY(0); }
+    25% { transform: rotate(-6deg) translateY(-4px); }
+    75% { transform: rotate(6deg) translateY(-4px); }
+  }
+
+  /* ===== Menú de modos ===== */
+  .modo-menu {
+    display: inline-flex;
+    gap: 6px;
+    background: #fff;
+    padding: 6px;
+    border-radius: 999px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  }
+  .modo-btn {
+    border: none;
+    background: transparent;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    color: #576574;
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+  .modo-btn.activo {
+    background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(124,58,237,0.4);
+  }
+
+  /* ===== Sección de lectura ===== */
+  .leer-seccion { max-width: 720px; margin: 8px auto 0; }
+  .sub-menu {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+  .sub-btn {
+    border: none;
+    background: #fff;
+    padding: 10px 18px;
+    border-radius: 16px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #576574;
+    font-family: inherit;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    transition: all 0.2s ease;
+  }
+  .sub-btn.activo {
+    background: #5f27cd;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(95,39,205,0.4);
+  }
+  .leer-ayuda {
+    text-align: center;
+    color: #576574;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 16px;
+  }
+
+  /* Sílabas */
+  .chips {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 20px;
+  }
+  .chip {
+    border: none;
+    width: 46px; height: 46px;
+    border-radius: 14px;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    transition: transform 0.15s ease;
+  }
+  .chip:active { transform: scale(0.9); }
+  .chip.activo { outline: 4px solid #2d3436; outline-offset: 2px; }
+  .silabas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 12px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .silaba-card {
+    border: none;
+    border-radius: 20px;
+    padding: 22px 8px;
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.14);
+    transition: transform 0.15s ease;
+  }
+  .silaba-card:active { transform: scale(0.92); }
+
+  /* Palabras con imagen */
+  .tarjeta-lectura {
+    background: #fff;
+    border-radius: 32px;
+    padding: 30px 24px;
+    text-align: center;
+    max-width: 420px;
+    margin: 0 auto;
+    box-shadow: 0 14px 40px rgba(0,0,0,0.12);
+  }
+  .lectura-emoji { font-size: clamp(80px, 22vw, 130px); line-height: 1; }
+  .lectura-silabeo {
+    font-size: clamp(26px, 7vw, 40px);
+    font-weight: 800;
+    color: #5f27cd;
+    margin: 14px 0 4px;
+    letter-spacing: 1px;
+  }
+  .lectura-silabeo .sil { transition: color 0.2s ease; }
+  .lectura-silabeo .sil.activa { color: #FF6B6B; }
+  .lectura-palabra {
+    font-size: clamp(28px, 8vw, 46px);
+    font-weight: 800;
+    color: #2d3436;
+    margin-bottom: 18px;
+    text-transform: lowercase;
+  }
+  .lectura-botones { display: flex; flex-direction: column; gap: 10px; }
+  .leer-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .nav-btn {
+    border: none;
+    background: #fff;
+    padding: 12px 20px;
+    border-radius: 16px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #2d3436;
+    font-family: inherit;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .nav-btn:active { transform: scale(0.95); }
+  .leer-contador { font-weight: 700; color: #8395a7; font-size: 15px; }
+
+  /* Formar palabra */
+  .formar-emoji, .lectura-emoji { line-height: 1; }
+  .formar-emoji { text-align: center; font-size: clamp(70px, 20vw, 120px); margin-bottom: 8px; }
+  .formar-objetivo {
+    display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 10px 0 6px;
+  }
+  .slot {
+    width: 50px; height: 60px;
+    border-radius: 14px;
+    background: #fff;
+    border: 3px dashed #c8d6e5;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; font-weight: 800; color: #2d3436;
+  }
+  .slot.lleno { border-style: solid; border-color: #1DD1A1; background: #eafff7; }
+  .formar-mensaje {
+    text-align: center; height: 30px; font-size: 22px; font-weight: 800; margin: 6px 0;
+  }
+  .formar-letras {
+    display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 8px;
+  }
+  .letra-pieza {
+    width: 52px; height: 62px;
+    border: none; border-radius: 14px;
+    font-size: 30px; font-weight: 800; color: #fff; cursor: pointer;
+    font-family: inherit; box-shadow: 0 5px 14px rgba(0,0,0,0.16);
+    transition: transform 0.12s ease, opacity 0.2s ease;
+  }
+  .letra-pieza:active { transform: scale(0.9); }
+  .letra-pieza.usada { opacity: 0.25; pointer-events: none; }
+  @keyframes festejo {
+    0%,100% { transform: scale(1) rotate(0); }
+    25% { transform: scale(1.15) rotate(-5deg); }
+    75% { transform: scale(1.15) rotate(5deg); }
+  }
+  .festejando { animation: festejo 0.5s ease-in-out 2; }
+
+  /* ===== Estrellas / premios ===== */
+  .estrellas-badge {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, #FECA57 0%, #FF9F43 100%);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 18px;
+    font-weight: 800;
+    box-shadow: 0 4px 14px rgba(255,159,67,0.45);
+  }
+  .estrella-cae {
+    position: absolute;
+    top: -10px;
+    pointer-events: none;
+    animation: caer 1.4s ease-in forwards;
+    z-index: 5;
+  }
+  @keyframes caer {
+    0% { transform: translateY(0) rotate(0); opacity: 1; }
+    100% { transform: translateY(320px) rotate(360deg); opacity: 0; }
+  }
+  #vista-formar { position: relative; overflow: hidden; }
+
+  /* ===== Barras de temas y niveles ===== */
+  .temas-barra, .niveles-barra {
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 12px;
+  }
+  .tema-btn {
+    border: none;
+    background: #fff;
+    padding: 9px 16px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #576574;
+    font-family: inherit;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+    transition: all 0.2s ease;
+  }
+  .tema-btn.activo {
+    background: linear-gradient(135deg, #54A0FF 0%, #0ABDE3 100%);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(84,160,255,0.4);
+  }
+  .niveles-barra { margin-bottom: 20px; }
+  .nivel-btn {
+    border: none;
+    background: #fff;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #576574;
+    font-family: inherit;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+    transition: all 0.2s ease;
+  }
+  .nivel-btn.activo {
+    background: #2d3436;
+    color: #fff;
+  }
+
+  /* ===== Modal de voz ===== */
+  .modal-voz {
+    background: linear-gradient(135deg, #5f27cd 0%, #341f97 100%);
+    max-width: 340px;
+  }
+  .selector-voz {
+    width: 100%;
+    padding: 14px;
+    border-radius: 16px;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: inherit;
+    color: #2d3436;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+  }
+  .vel-fila {
+    display: flex; justify-content: space-between; align-items: center;
+    color: #fff; font-weight: 700; font-size: 16px; margin-bottom: 6px;
+  }
+  .vel-valor { font-size: 15px; opacity: 0.95; }
+  .vel-slider {
+    width: 100%;
+    accent-color: #FECA57;
+    height: 8px;
+    margin-bottom: 6px;
+  }
+</style>
+</head>
+<body>
+  <div class="fb-header">
+    <button class="fb-back-btn" onclick="window.parent.postMessage('close-aprender','*')">←</button>
+    <div class="fb-header-title">🌸 FamyBloom · Aprender</div>
+    <div style="width: 40px"></div>
+  </div>
+  <header>
+    <h1>
+      <span class="letra-titulo l1">A</span><span class="letra-titulo l2">B</span><span class="letra-titulo l3">C</span>
+      <span class="sub-inline">de Constanza</span>
+    </h1>
+    <p class="subtitulo" id="subtitulo">🌸 Aprende con Bloomy · Toca una letra 🎵</p>
+    <div class="controles">
+      <div class="modo-menu">
+        <button class="modo-btn activo" id="modo-abc" onclick="setModo('abc')">🔤 Abecedario</button>
+        <button class="modo-btn" id="modo-leer" onclick="setModo('leer')">📖 Leer</button>
+      </div>
+      <div class="estrellas-badge" id="estrellas-badge"><span id="estrellas-contador">⭐ 0</span></div>
+      <button class="cantar-btn" id="cantar" onclick="cantarABC()">🎵 Cantar el ABC</button>
+      <div class="switcher">
+        <button class="lang-btn activo" id="btn-es" onclick="setIdioma('es')">🇪🇸 Español</button>
+        <button class="lang-btn" id="btn-en" onclick="setIdioma('en')">🇬🇧 English</button>
+        <button class="lang-btn" id="btn-voz" onclick="abrirAjustesVoz()" title="Elegir voz">🎙️</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="grid" id="grid"></main>
+
+  <!-- ===== SECCIÓN DE LECTURA ===== -->
+  <section id="leer" class="leer-seccion" style="display:none;">
+    <div class="sub-menu">
+      <button class="sub-btn activo" id="sub-silabas" onclick="setLeerModo('silabas')">🔡 Sílabas</button>
+      <button class="sub-btn" id="sub-palabras" onclick="setLeerModo('palabras')">🖼️ Palabras</button>
+      <button class="sub-btn" id="sub-formar" onclick="setLeerModo('formar')">🧩 Formar</button>
+    </div>
+
+    <!-- Filtros: temas y niveles (solo en Palabras y Formar) -->
+    <div id="filtros-lectura" style="display:none;">
+      <div class="temas-barra" id="temas-barra"></div>
+      <div class="niveles-barra" id="niveles-barra"></div>
+    </div>
+
+    <!-- Sílabas -->
+    <div id="vista-silabas" class="vista-leer">
+      <p class="leer-ayuda" id="ayuda-silabas">Elige una letra y lee sus sílabas. ¡Toca cada una para escucharla!</p>
+      <div class="chips" id="chips-silabas"></div>
+      <div class="silabas-grid" id="silabas-grid"></div>
+    </div>
+
+    <!-- Palabras con imagen -->
+    <div id="vista-palabras" class="vista-leer" style="display:none;">
+      <div class="tarjeta-lectura" id="tarjeta-lectura">
+        <div class="lectura-emoji" id="lectura-emoji">🍎</div>
+        <div class="lectura-silabeo" id="lectura-silabeo"></div>
+        <div class="lectura-palabra" id="lectura-palabra"></div>
+        <div class="lectura-botones">
+          <button class="palabra-btn" id="btn-leer-silabas">🐢 Por sílabas</button>
+          <button class="palabra-btn" id="btn-leer-completa">🔊 Palabra completa</button>
+        </div>
+      </div>
+      <div class="leer-nav">
+        <button class="nav-btn" onclick="palabraAnterior()">⬅️ Antes</button>
+        <span class="leer-contador" id="leer-contador"></span>
+        <button class="nav-btn" onclick="palabraSiguiente()">Después ➡️</button>
+      </div>
+    </div>
+
+    <!-- Formar palabra -->
+    <div id="vista-formar" class="vista-leer" style="display:none;">
+      <div class="formar-emoji" id="formar-emoji">🍎</div>
+      <p class="leer-ayuda">Toca las letras en orden para formar la palabra:</p>
+      <div class="formar-objetivo" id="formar-objetivo"></div>
+      <div class="formar-mensaje" id="formar-mensaje"></div>
+      <div class="formar-letras" id="formar-letras"></div>
+      <div class="leer-nav">
+        <button class="nav-btn" onclick="reiniciarFormar()">🔁 Reiniciar</button>
+        <button class="nav-btn" onclick="otraPalabraFormar()">✨ Otra palabra</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="overlay" id="overlay" onclick="cerrarModal(event)">
+    <div class="modal" id="modal" onclick="event.stopPropagation()">
+      <button class="cerrar" onclick="cerrarModal()" aria-label="Cerrar">✕</button>
+      <div class="modal-letra" id="modal-letra"></div>
+      <div class="modal-emoji" id="modal-emoji"></div>
+      <div class="modal-palabras" id="modal-palabras"></div>
+      <button class="repetir" id="repetir"></button>
+    </div>
+  </div>
+
+  <!-- Modal de ajustes de voz -->
+  <div class="overlay" id="overlay-voz" onclick="if(event.target.id==='overlay-voz')cerrarAjustesVoz()">
+    <div class="modal modal-voz" onclick="event.stopPropagation()">
+      <button class="cerrar" onclick="cerrarAjustesVoz()" aria-label="Cerrar">✕</button>
+      <h2 id="titulo-ajustes" style="margin:0 0 18px;font-size:24px;">🎙️ Elegir voz</h2>
+      <select id="selector-voz" class="selector-voz" onchange="cambiarVoz(this.value)"></select>
+      <div class="vel-fila">
+        <span id="label-velocidad">Velocidad</span>
+        <span id="vel-valor" class="vel-valor">🚶 Normal</span>
+      </div>
+      <input type="range" id="vel-slider" class="vel-slider" min="0.5" max="1.2" step="0.05"
+             value="0.85" oninput="cambiarVelocidad(this.value)">
+      <button class="repetir" style="margin-top:10px;" onclick="cerrarAjustesVoz()">
+        <span id="cerrar-ajustes-txt">Listo</span> ✅
+      </button>
+    </div>
+  </div>
+
+  <p class="aviso">💡 Si no escuchas la voz o la música, asegúrate de que el sonido del celular esté activado.</p>
+
+<script>
+  const LETRAS = [
+    { letra: "A", emoji: "🍎", esWord: "Árbol", enWord: "Apple" },
+    { letra: "B", emoji: "🐝", esWord: "Burro", enWord: "Bee" },
+    { letra: "C", emoji: "🚗", esWord: "Carro", enWord: "Car" },
+    { letra: "D", emoji: "🐬", esWord: "Delfín", enWord: "Dolphin" },
+    { letra: "E", emoji: "🐘", esWord: "Elefante", enWord: "Elephant" },
+    { letra: "F", emoji: "🌸", esWord: "Flor", enWord: "Flower" },
+    { letra: "G", emoji: "🐐", esWord: "Gato", enWord: "Goat" },
+    { letra: "H", emoji: "🚁", esWord: "Helicóptero", enWord: "Helicopter" },
+    { letra: "I", emoji: "🏝️", esWord: "Isla", enWord: "Island" },
+    { letra: "J", emoji: "🧃", esWord: "Jugo", enWord: "Juice" },
+    { letra: "K", emoji: "🐨", esWord: "Koala", enWord: "Koala" },
+    { letra: "L", emoji: "🦁", esWord: "León", enWord: "Lion" },
+    { letra: "M", emoji: "🦋", esWord: "Mariposa", enWord: "Moth" },
+    { letra: "N", emoji: "🪺", esWord: "Nido", enWord: "Nest" },
+    { letra: "Ñ", emoji: "🪆", esWord: "Ñoño", enWord: null },
+    { letra: "O", emoji: "🐻", esWord: "Oso", enWord: "Orange" },
+    { letra: "P", emoji: "🐶", esWord: "Perro", enWord: "Puppy" },
+    { letra: "Q", emoji: "🧀", esWord: "Queso", enWord: "Queen" },
+    { letra: "R", emoji: "🐸", esWord: "Rana", enWord: "Rabbit" },
+    { letra: "S", emoji: "☀️", esWord: "Sol", enWord: "Sun" },
+    { letra: "T", emoji: "🐢", esWord: "Tortuga", enWord: "Turtle" },
+    { letra: "U", emoji: "🍇", esWord: "Uva", enWord: "Umbrella" },
+    { letra: "V", emoji: "🐄", esWord: "Vaca", enWord: "Violin" },
+    { letra: "W", emoji: "🧇", esWord: "Wafle", enWord: "Waffle" },
+    { letra: "X", emoji: "🎼", esWord: "Xilófono", enWord: "Xylophone" },
+    { letra: "Y", emoji: "🪀", esWord: "Yoyo", enWord: "Yo-yo" },
+    { letra: "Z", emoji: "🦊", esWord: "Zorro", enWord: "Zebra" },
+  ];
+
+  const COLORES = [
+    "#FF6B6B","#FF9F43","#FECA57","#1DD1A1","#10AC84",
+    "#48DBFB","#0ABDE3","#54A0FF","#5F27CD","#A55EEA",
+    "#FF6B9D","#EE5A6F","#F368E0","#FF9FF3","#FDA7DF"
+  ];
+  const colorDe = i => COLORES[i % COLORES.length];
+
+  // ---- Notas musicales (Hz) de la canción ABC (melodía de "Twinkle Twinkle") ----
+  // C=261.63 D=293.66 E=329.63 F=349.23 G=392.00 A=440.00 (la4) etc.
+  const C4=261.63, D4=293.66, E4=329.63, F4=349.23, G4=392.00, A4=440.00,
+        C5=523.25, D5=587.33, E5=659.25, F5=698.46, G5=783.99;
+  // Una nota por letra siguiendo la melodía clásica del abecedario (A B C D...)
+  // Melodía del ABC (Twinkle Twinkle). Solo letras anglosajonas — Ñ es bonus visual.
+  // El array tiene 27 posiciones porque LETRAS tiene 27 (incluye Ñ),
+  // pero al cantar SALTAMOS la Ñ para no descuadrar el ritmo de la canción.
+  const NOTAS = [
+    C4, C4, G4, G4, A4, A4, G4,        // A B C D E F G
+    F4, F4, E4, E4, D4, D4, C4,        // H I J K L M N
+    null,                              // Ñ → se omite al cantar
+    G4, G4, F4, F4, E4, E4, D4,        // O P Q R S T U
+    G4, F4, E4, E4, D4                 // V W X Y Z
+  ];
+
+  let idioma = "es";
+  let voces = [];
+  let actual = null;
+  let cantando = false;
+  let audioCtx = null;
+
+  function getCtx() {
+    if (!audioCtx) {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (AC) audioCtx = new AC();
+    }
+    if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
+    return audioCtx;
+  }
+
+  // Toca una notita tipo campana/xilófono
+  function tono(freq, duracion = 0.45) {
+    const ctx = getCtx();
+    if (!ctx || !freq) return;
+    const t = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = "triangle";
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(0.35, t + 0.03);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + duracion);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(t);
+    osc.stop(t + duracion + 0.05);
+  }
+
+  function cargarVoces() {
+    voces = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+    poblarSelectorVoces();
+  }
+  cargarVoces();
+  if (window.speechSynthesis) window.speechSynthesis.onvoiceschanged = cargarVoces;
+
+  // Voz elegida por el usuario para cada idioma (URI de la voz) + velocidad
+  let vozElegida = { es: null, en: null };
+  let velocidadVoz = 0.85;
+  try {
+    if (window.localStorage) {
+      const ve = window.localStorage.getItem("vozConstanza");
+      if (ve) vozElegida = JSON.parse(ve);
+      const vel = window.localStorage.getItem("velVozConstanza");
+      if (vel) velocidadVoz = parseFloat(vel) || 0.85;
+    }
+  } catch (e) {}
+
+  function guardarPrefsVoz() {
+    try {
+      if (window.localStorage) {
+        window.localStorage.setItem("vozConstanza", JSON.stringify(vozElegida));
+        window.localStorage.setItem("velVozConstanza", String(velocidadVoz));
+      }
+    } catch (e) {}
+  }
+
+  function vocesDe(lang) {
+    const prefijo = lang === "es" ? "es" : "en";
+    return voces.filter(v => v.lang && v.lang.toLowerCase().startsWith(prefijo));
+  }
+
+  function elegirVoz(lang) {
+    const lista = vocesDe(lang);
+    if (!lista.length) return null;
+    const guardada = vozElegida[lang];
+    if (guardada) {
+      const encontrada = lista.find(v => v.voiceURI === guardada);
+      if (encontrada) return encontrada;
+    }
+    return lista[0];
+  }
+
+  function hablar(texto, lang) {
+    if (!window.speechSynthesis || !texto) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(texto);
+    u.lang = lang === "es" ? "es-ES" : "en-US";
+    const v = elegirVoz(lang);
+    if (v) { u.voice = v; u.lang = v.lang; }
+    u.rate = velocidadVoz;
+    u.pitch = 1.15;
+    window.speechSynthesis.speak(u);
+  }
+
+  // Rellena el selector de voces según el idioma activo
+  function poblarSelectorVoces() {
+    const sel = document.getElementById("selector-voz");
+    if (!sel) return;
+    const lista = vocesDe(idioma);
+    sel.innerHTML = "";
+    if (!lista.length) {
+      const opt = document.createElement("option");
+      opt.textContent = idioma === "es" ? "(voz por defecto)" : "(default voice)";
+      sel.appendChild(opt);
+      sel.disabled = true;
+      return;
+    }
+    sel.disabled = false;
+    lista.forEach(v => {
+      const opt = document.createElement("option");
+      opt.value = v.voiceURI;
+      // Nombre legible: nombre de la voz + región
+      opt.textContent = v.name.replace(/Google\s*/i, "") + " (" + v.lang + ")";
+      if (vozElegida[idioma] === v.voiceURI) opt.selected = true;
+      sel.appendChild(opt);
+    });
+    // Si no había una guardada, marcar la primera como elegida
+    if (!vozElegida[idioma]) vozElegida[idioma] = lista[0].voiceURI;
+  }
+
+  function cambiarVoz(uri) {
+    vozElegida[idioma] = uri;
+    guardarPrefsVoz();
+    // Pequeña muestra para que se escuche la voz elegida
+    hablar(idioma === "es" ? "Hola, soy tu nueva voz" : "Hi, I am your new voice", idioma);
+  }
+
+  function cambiarVelocidad(v) {
+    velocidadVoz = parseFloat(v);
+    guardarPrefsVoz();
+    document.getElementById("vel-valor").textContent = etiquetaVelocidad();
+  }
+
+  function etiquetaVelocidad() {
+    if (velocidadVoz <= 0.7) return idioma === "es" ? "🐢 Lenta" : "🐢 Slow";
+    if (velocidadVoz >= 1.0) return idioma === "es" ? "🐇 Rápida" : "🐇 Fast";
+    return idioma === "es" ? "🚶 Normal" : "🚶 Normal";
+  }
+
+  function abrirAjustesVoz() {
+    poblarSelectorVoces();
+    document.getElementById("vel-slider").value = velocidadVoz;
+    document.getElementById("vel-valor").textContent = etiquetaVelocidad();
+    document.getElementById("titulo-ajustes").textContent =
+      idioma === "es" ? "🎙️ Elegir voz" : "🎙️ Choose voice";
+    document.getElementById("label-velocidad").textContent =
+      idioma === "es" ? "Velocidad" : "Speed";
+    document.getElementById("cerrar-ajustes-txt").textContent =
+      idioma === "es" ? "Listo" : "Done";
+    document.getElementById("overlay-voz").classList.add("abierto");
+  }
+
+  function cerrarAjustesVoz() {
+    document.getElementById("overlay-voz").classList.remove("abierto");
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+  }
+
+  function setIdioma(l) {
+    idioma = l;
+    document.getElementById("btn-es").classList.toggle("activo", l === "es");
+    document.getElementById("btn-en").classList.toggle("activo", l === "en");
+    document.getElementById("cantar").textContent =
+      l === "es" ? "🎵 Cantar el ABC" : "🎵 Sing the ABC";
+    document.getElementById("modo-abc").textContent = l === "es" ? "🔤 Abecedario" : "🔤 Alphabet";
+    document.getElementById("modo-leer").textContent = l === "es" ? "📖 Leer" : "📖 Read";
+    document.getElementById("sub-silabas").textContent = l === "es" ? "🔡 Sílabas" : "🔡 Syllables";
+    document.getElementById("sub-palabras").textContent = l === "es" ? "🖼️ Palabras" : "🖼️ Words";
+    document.getElementById("sub-formar").textContent = l === "es" ? "🧩 Formar" : "🧩 Build";
+    poblarSelectorVoces();
+
+    if (modo === "leer") {
+      document.getElementById("subtitulo").textContent =
+        l === "es" ? "¡A leer paso a paso! 📖" : "Let's read step by step! 📖";
+      setLeerModo(leerModo);
+    } else {
+      document.getElementById("subtitulo").textContent =
+        l === "es" ? "🌸 Aprende con Bloomy · Toca una letra 🎵" : "🌸 Learn with Bloomy · Tap a letter 🎵";
+      render();
+    }
+  }
+
+  function render() {
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+    LETRAS.forEach((item, i) => {
+      const palabra = idioma === "es" ? item.esWord : (item.enWord || item.esWord);
+      const btn = document.createElement("button");
+      btn.className = "tarjeta";
+      btn.id = "card-" + i;
+      btn.style.background = colorDe(i);
+      btn.style.animationDelay = (i * 0.03) + "s";
+      btn.innerHTML =
+        '<span class="letra-grande">' + item.letra + '</span>' +
+        '<span class="emoji">' + item.emoji + '</span>' +
+        '<span class="palabra">' + palabra + '</span>';
+      btn.onclick = () => abrirLetra(item, i);
+      grid.appendChild(btn);
+    });
+  }
+
+  function abrirLetra(item, i) {
+    if (cantando) return;
+    actual = { item, i };
+    if (NOTAS[i] !== null) tono(NOTAS[i]); // suena su nota (Ñ no tiene)
+
+    const modal = document.getElementById("modal");
+    modal.style.background = colorDe(i);
+    document.getElementById("modal-letra").textContent = item.letra;
+    document.getElementById("modal-emoji").textContent = item.emoji;
+
+    const cont = document.getElementById("modal-palabras");
+    cont.innerHTML = "";
+    const bEs = document.createElement("button");
+    bEs.className = "palabra-btn";
+    bEs.textContent = "🇪🇸 " + item.esWord + " 🔊";
+    bEs.onclick = () => hablar(item.esWord, "es");
+    cont.appendChild(bEs);
+    if (item.enWord) {
+      const bEn = document.createElement("button");
+      bEn.className = "palabra-btn";
+      bEn.textContent = "🇬🇧 " + item.enWord + " 🔊";
+      bEn.onclick = () => hablar(item.enWord, "en");
+      cont.appendChild(bEn);
+    }
+
+    const rep = document.getElementById("repetir");
+    rep.textContent = idioma === "es" ? "🔁 Escuchar otra vez" : "🔁 Listen again";
+    rep.onclick = () => {
+      if (NOTAS[i] !== null) tono(NOTAS[i]);
+      const palabra = idioma === "es" ? item.esWord : (item.enWord || item.esWord);
+      setTimeout(() => hablar(item.letra + ". " + palabra, idioma), 250);
+    };
+
+    document.getElementById("overlay").classList.add("abierto");
+    const palabra = idioma === "es" ? item.esWord : (item.enWord || item.esWord);
+    setTimeout(() => hablar(item.letra + ". " + palabra, idioma), 250);
+  }
+
+  function cerrarModal(e) {
+    document.getElementById("overlay").classList.remove("abierto");
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+  }
+
+  // ---- Cantar todo el abecedario seguido ----
+  // Pausas cortas tras ciertas letras, como en la canción real.
+  // Índices: G=6, P=17, V=23 (G... / ...N-O-P 🎵 Q-R-S... / ...U-V 🎵 W-X-Y-Z)
+  // Pausas tras G(6), P(17), V(23) — relativas al orden REAL de la canción (sin Ñ)
+  // En el array LETRAS: G=6, P=17 (Ñ está en 14, así que P queda en 17), V=23
+  const PAUSA_TRAS = { 6: 1, 17: 1, 23: 1, 26: 0 };
+
+  function cantarABC() {
+    if (cantando) return;
+    getCtx();
+    cantando = true;
+    const btn = document.getElementById("cantar");
+    btn.classList.add("cantando");
+    cerrarModal();
+
+    const paso = 520;        // ms entre letras
+    const pausaExtra = 420;  // ms de silencio adicional tras las letras marcadas
+
+    let t = 0; // tiempo acumulado en ms
+    LETRAS.forEach((item, i) => {
+      // Si esta letra NO tiene nota (Ñ), la saltamos en la melodía
+      // pero igual la resaltamos visualmente con un pequeño "brillo silencioso"
+      if (NOTAS[i] === null) {
+        setTimeout(() => {
+          const card = document.getElementById("card-" + i);
+          if (card) {
+            card.classList.add("brillando");
+            card.scrollIntoView({ behavior: "smooth", block: "center" });
+            setTimeout(() => card.classList.remove("brillando"), 250);
+          }
+        }, t);
+        t += 280; // pasada visual corta, sin descuadrar la canción
+        return;
+      }
+      setTimeout(() => {
+        tono(NOTAS[i], 0.5);
+        const card = document.getElementById("card-" + i);
+        if (card) {
+          card.classList.add("brillando");
+          card.scrollIntoView({ behavior: "smooth", block: "center" });
+          setTimeout(() => card.classList.remove("brillando"), paso - 60);
+        }
+      }, t);
+      t += paso + (PAUSA_TRAS[i] ? pausaExtra : 0);
+    });
+
+    setTimeout(() => {
+      cantando = false;
+      btn.classList.remove("cantando");
+    }, t + 200);
+  }
+
+  // ===== CAMBIO DE MODO (Abecedario / Leer) =====
+  let modo = "abc";
+
+  function setModo(m) {
+    modo = m;
+    document.getElementById("modo-abc").classList.toggle("activo", m === "abc");
+    document.getElementById("modo-leer").classList.toggle("activo", m === "leer");
+    document.getElementById("grid").style.display = m === "abc" ? "grid" : "none";
+    document.getElementById("cantar").style.display = m === "abc" ? "" : "none";
+    document.getElementById("leer").style.display = m === "leer" ? "block" : "none";
+    document.getElementById("estrellas-badge").style.display = m === "leer" ? "inline-flex" : "none";
+    cerrarModal();
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    if (m === "leer") {
+      document.getElementById("subtitulo").textContent =
+        idioma === "es" ? "¡A leer paso a paso! 📖" : "Let's read step by step! 📖";
+      setLeerModo(leerModo);
+    } else {
+      document.getElementById("subtitulo").textContent =
+        idioma === "es" ? "🌸 Aprende con Bloomy · Toca una letra 🎵" : "🌸 Learn with Bloomy · Tap a letter 🎵";
+    }
+  }
+
+  // ===== DATOS DE LECTURA =====
+  const VOCALES = ["a","e","i","o","u"];
+  const CONSONANTES = ["m","p","s","l","t","d","n","b","c","f","g","r","v","ñ"];
+
+  // Palabras agrupadas por tema, con silabeo y emoji (ES / EN)
+  const TEMAS = [
+    {
+      id: "animales", icono: "🐾", es: "Animales", en: "Animals",
+      palabras: [
+        { emoji: "🐱", es: "gato", en: "cat", silEs: ["ga","to"], silEn: ["cat"] },
+        { emoji: "🐶", es: "perro", en: "dog", silEs: ["pe","rro"], silEn: ["dog"] },
+        { emoji: "🐟", es: "pez", en: "fish", silEs: ["pez"], silEn: ["fish"] },
+        { emoji: "🐝", es: "abeja", en: "bee", silEs: ["a","be","ja"], silEn: ["bee"] },
+        { emoji: "🐢", es: "tortuga", en: "turtle", silEs: ["tor","tu","ga"], silEn: ["tur","tle"] },
+        { emoji: "🦋", es: "mariposa", en: "butterfly", silEs: ["ma","ri","po","sa"], silEn: ["but","ter","fly"] },
+        { emoji: "🐘", es: "elefante", en: "elephant", silEs: ["e","le","fan","te"], silEn: ["e","le","phant"] },
+        { emoji: "🦒", es: "jirafa", en: "giraffe", silEs: ["ji","ra","fa"], silEn: ["gi","raffe"] },
+        { emoji: "🐮", es: "vaca", en: "cow", silEs: ["va","ca"], silEn: ["cow"] },
+        { emoji: "🐸", es: "rana", en: "frog", silEs: ["ra","na"], silEn: ["frog"] },
+      ]
+    },
+    {
+      id: "comida", icono: "🍎", es: "Comida", en: "Food",
+      palabras: [
+        { emoji: "🍎", es: "manzana", en: "apple", silEs: ["man","za","na"], silEn: ["ap","ple"] },
+        { emoji: "🍦", es: "helado", en: "ice cream", silEs: ["he","la","do"], silEn: ["ice","cream"] },
+        { emoji: "🧀", es: "queso", en: "cheese", silEs: ["que","so"], silEn: ["cheese"] },
+        { emoji: "🍇", es: "uvas", en: "grapes", silEs: ["u","vas"], silEn: ["grapes"] },
+        { emoji: "🍌", es: "banana", en: "banana", silEs: ["ba","na","na"], silEn: ["ba","na","na"] },
+        { emoji: "🥛", es: "leche", en: "milk", silEs: ["le","che"], silEn: ["milk"] },
+        { emoji: "🍪", es: "galleta", en: "cookie", silEs: ["ga","lle","ta"], silEn: ["coo","kie"] },
+        { emoji: "🥚", es: "huevo", en: "egg", silEs: ["hue","vo"], silEn: ["egg"] },
+        { emoji: "🍞", es: "pan", en: "bread", silEs: ["pan"], silEn: ["bread"] },
+        { emoji: "🍓", es: "fresa", en: "strawberry", silEs: ["fre","sa"], silEn: ["straw","ber","ry"] },
+      ]
+    },
+    {
+      id: "naturaleza", icono: "🌳", es: "Naturaleza", en: "Nature",
+      palabras: [
+        { emoji: "☀️", es: "sol", en: "sun", silEs: ["sol"], silEn: ["sun"] },
+        { emoji: "🌙", es: "luna", en: "moon", silEs: ["lu","na"], silEn: ["moon"] },
+        { emoji: "⭐", es: "estrella", en: "star", silEs: ["es","tre","lla"], silEn: ["star"] },
+        { emoji: "🌸", es: "flor", en: "flower", silEs: ["flor"], silEn: ["flo","wer"] },
+        { emoji: "🌳", es: "árbol", en: "tree", silEs: ["ár","bol"], silEn: ["tree"] },
+        { emoji: "🌈", es: "arcoíris", en: "rainbow", silEs: ["ar","co","í","ris"], silEn: ["rain","bow"] },
+        { emoji: "☁️", es: "nube", en: "cloud", silEs: ["nu","be"], silEn: ["cloud"] },
+        { emoji: "🌊", es: "mar", en: "sea", silEs: ["mar"], silEn: ["sea"] },
+        { emoji: "🍃", es: "hoja", en: "leaf", silEs: ["ho","ja"], silEn: ["leaf"] },
+        { emoji: "🏔️", es: "montaña", en: "mountain", silEs: ["mon","ta","ña"], silEn: ["moun","tain"] },
+      ]
+    },
+    {
+      id: "casa", icono: "🏠", es: "Mi casa", en: "My home",
+      palabras: [
+        { emoji: "🏠", es: "casa", en: "house", silEs: ["ca","sa"], silEn: ["house"] },
+        { emoji: "🪑", es: "silla", en: "chair", silEs: ["si","lla"], silEn: ["chair"] },
+        { emoji: "🛏️", es: "cama", en: "bed", silEs: ["ca","ma"], silEn: ["bed"] },
+        { emoji: "🚪", es: "puerta", en: "door", silEs: ["puer","ta"], silEn: ["door"] },
+        { emoji: "🪟", es: "ventana", en: "window", silEs: ["ven","ta","na"], silEn: ["win","dow"] },
+        { emoji: "📚", es: "libro", en: "book", silEs: ["li","bro"], silEn: ["book"] },
+        { emoji: "🧸", es: "oso", en: "teddy", silEs: ["o","so"], silEn: ["ted","dy"] },
+        { emoji: "🔑", es: "llave", en: "key", silEs: ["lla","ve"], silEn: ["key"] },
+        { emoji: "🕯️", es: "vela", en: "candle", silEs: ["ve","la"], silEn: ["can","dle"] },
+        { emoji: "🧦", es: "media", en: "sock", silEs: ["me","dia"], silEn: ["sock"] },
+      ]
+    },
+  ];
+
+  // Nivel de dificultad según número de letras de la palabra (sin espacios)
+  function nivelDe(palabra) {
+    const n = palabra.replace(/\s/g, "").length;
+    if (n <= 4) return 1;
+    if (n <= 6) return 2;
+    return 3;
+  }
+
+  let temaActivo = 0;
+  let nivelActivo = 1; // 1=fácil, 2=medio, 3=difícil
+  let leerModo = "silabas";
+  let consonanteActiva = "m";
+  let palabraIndex = 0;
+  let estrellas = 0;
+
+  // Cargar estrellas guardadas (si el navegador lo permite)
+  try {
+    const g = window.localStorage ? window.localStorage.getItem("estrellasConstanza") : null;
+    if (g) estrellas = parseInt(g, 10) || 0;
+  } catch (e) {}
+
+  function guardarEstrellas() {
+    try {
+      if (window.localStorage) window.localStorage.setItem("estrellasConstanza", String(estrellas));
+    } catch (e) {}
+    actualizarContadorEstrellas();
+  }
+
+  function actualizarContadorEstrellas() {
+    const el = document.getElementById("estrellas-contador");
+    if (el) el.textContent = "⭐ " + estrellas;
+  }
+
+  // Devuelve las palabras del tema activo filtradas por nivel
+  function palabrasFiltradas() {
+    const lista = TEMAS[temaActivo].palabras;
+    const idiomaKey = idioma === "es" ? "es" : "en";
+    const filtradas = lista.filter(p => nivelDe(p[idiomaKey]) === nivelActivo);
+    return filtradas.length ? filtradas : lista; // si un nivel queda vacío, mostrar todas
+  }
+
+  function setLeerModo(lm) {
+    leerModo = lm;
+    document.getElementById("sub-silabas").classList.toggle("activo", lm === "silabas");
+    document.getElementById("sub-palabras").classList.toggle("activo", lm === "palabras");
+    document.getElementById("sub-formar").classList.toggle("activo", lm === "formar");
+    document.getElementById("vista-silabas").style.display = lm === "silabas" ? "block" : "none";
+    document.getElementById("vista-palabras").style.display = lm === "palabras" ? "block" : "none";
+    document.getElementById("vista-formar").style.display = lm === "formar" ? "block" : "none";
+    // Los temas y niveles solo aplican a Palabras y Formar
+    const mostrarFiltros = (lm === "palabras" || lm === "formar");
+    document.getElementById("filtros-lectura").style.display = mostrarFiltros ? "block" : "none";
+    palabraIndex = 0;
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    if (lm === "silabas") renderSilabas();
+    if (lm === "palabras") { renderFiltros(); renderPalabra(); }
+    if (lm === "formar") { renderFiltros(); iniciarFormar(); }
+  }
+
+  // ---- Barra de temas y niveles ----
+  function renderFiltros() {
+    const temasCont = document.getElementById("temas-barra");
+    temasCont.innerHTML = "";
+    TEMAS.forEach((t, i) => {
+      const b = document.createElement("button");
+      b.className = "tema-btn" + (i === temaActivo ? " activo" : "");
+      b.textContent = t.icono + " " + (idioma === "es" ? t.es : t.en);
+      b.onclick = () => { temaActivo = i; palabraIndex = 0; refrescarVistaLectura(); };
+      temasCont.appendChild(b);
+    });
+
+    const niveles = [
+      { n: 1, es: "Fácil", en: "Easy", icono: "🟢" },
+      { n: 2, es: "Medio", en: "Medium", icono: "🟡" },
+      { n: 3, es: "Difícil", en: "Hard", icono: "🔴" },
+    ];
+    const nivelCont = document.getElementById("niveles-barra");
+    nivelCont.innerHTML = "";
+    niveles.forEach(nv => {
+      const b = document.createElement("button");
+      b.className = "nivel-btn" + (nv.n === nivelActivo ? " activo" : "");
+      b.textContent = nv.icono + " " + (idioma === "es" ? nv.es : nv.en);
+      b.onclick = () => { nivelActivo = nv.n; palabraIndex = 0; refrescarVistaLectura(); };
+      nivelCont.appendChild(b);
+    });
+  }
+
+  function refrescarVistaLectura() {
+    renderFiltros();
+    if (leerModo === "palabras") renderPalabra();
+    if (leerModo === "formar") iniciarFormar();
+  }
+
+  // ---- Sílabas ----
+  function renderSilabas() {
+    const chips = document.getElementById("chips-silabas");
+    chips.innerHTML = "";
+    CONSONANTES.forEach((c, i) => {
+      const b = document.createElement("button");
+      b.className = "chip" + (c === consonanteActiva ? " activo" : "");
+      b.style.background = colorDe(i);
+      b.textContent = c.toUpperCase();
+      b.onclick = () => { consonanteActiva = c; renderSilabas(); };
+      chips.appendChild(b);
+    });
+
+    const grid = document.getElementById("silabas-grid");
+    grid.innerHTML = "";
+    VOCALES.forEach((v, i) => {
+      const sil = consonanteActiva + v;
+      const b = document.createElement("button");
+      b.className = "silaba-card";
+      b.style.background = colorDe((CONSONANTES.indexOf(consonanteActiva) + i));
+      b.textContent = sil;
+      b.onclick = () => hablar(sil, "es");
+      grid.appendChild(b);
+    });
+
+    document.getElementById("ayuda-silabas").textContent =
+      idioma === "es"
+        ? "Elige una letra y lee sus sílabas. ¡Toca cada una para escucharla!"
+        : "Pick a letter and read its syllables. Tap each one to hear it!";
+  }
+
+  // ---- Palabras con imagen ----
+  function renderPalabra() {
+    const lista = palabrasFiltradas();
+    if (palabraIndex >= lista.length) palabraIndex = 0;
+    const p = lista[palabraIndex];
+    document.getElementById("lectura-emoji").textContent = p.emoji;
+    const sils = idioma === "es" ? p.silEs : p.silEn;
+    const palabra = idioma === "es" ? p.es : p.en;
+
+    const cont = document.getElementById("lectura-silabeo");
+    cont.innerHTML = sils
+      .map((s, i) => '<span class="sil" data-i="' + i + '">' + s + '</span>')
+      .join('<span style="opacity:.4">·</span>');
+
+    document.getElementById("lectura-palabra").textContent = palabra;
+    document.getElementById("leer-contador").textContent =
+      (palabraIndex + 1) + " / " + lista.length;
+
+    document.getElementById("btn-leer-silabas").textContent =
+      idioma === "es" ? "🐢 Por sílabas" : "🐢 By syllables";
+    document.getElementById("btn-leer-completa").textContent =
+      idioma === "es" ? "🔊 Palabra completa" : "🔊 Whole word";
+
+    document.getElementById("btn-leer-silabas").onclick = () => leerPorSilabas(sils);
+    document.getElementById("btn-leer-completa").onclick = () => hablar(palabra, idioma);
+  }
+
+  function leerPorSilabas(sils) {
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    const spans = document.querySelectorAll("#lectura-silabeo .sil");
+    sils.forEach((s, i) => {
+      setTimeout(() => {
+        spans.forEach(sp => sp.classList.remove("activa"));
+        if (spans[i]) spans[i].classList.add("activa");
+        hablar(s, idioma);
+        if (i === sils.length - 1) {
+          setTimeout(() => spans.forEach(sp => sp.classList.remove("activa")), 700);
+        }
+      }, i * 750);
+    });
+  }
+
+  function palabraSiguiente() {
+    const lista = palabrasFiltradas();
+    palabraIndex = (palabraIndex + 1) % lista.length;
+    renderPalabra();
+  }
+  function palabraAnterior() {
+    const lista = palabrasFiltradas();
+    palabraIndex = (palabraIndex - 1 + lista.length) % lista.length;
+    renderPalabra();
+  }
+
+  // ---- Formar palabra ----
+  let formarPalabra = "";
+  let formarProgreso = 0;
+
+  function iniciarFormar() {
+    const lista = palabrasFiltradas();
+    if (palabraIndex >= lista.length) palabraIndex = 0;
+    const p = lista[palabraIndex];
+    formarPalabra = (idioma === "es" ? p.es : p.en).replace(/\s/g, "");
+    formarProgreso = 0;
+    document.getElementById("formar-emoji").textContent = p.emoji;
+    document.getElementById("formar-mensaje").textContent = "";
+    const cont = document.getElementById("formar-letras");
+    delete cont.dataset.orden;
+    renderFormar();
+  }
+
+  function renderFormar() {
+    const obj = document.getElementById("formar-objetivo");
+    obj.innerHTML = "";
+    for (let i = 0; i < formarPalabra.length; i++) {
+      const s = document.createElement("div");
+      s.className = "slot" + (i < formarProgreso ? " lleno" : "");
+      s.textContent = i < formarProgreso ? formarPalabra[i] : "";
+      obj.appendChild(s);
+    }
+
+    const cont = document.getElementById("formar-letras");
+    cont.innerHTML = "";
+    if (!cont.dataset.orden || cont.dataset.palabra !== formarPalabra) {
+      const arr = formarPalabra.split("");
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      cont.dataset.orden = JSON.stringify(arr);
+      cont.dataset.palabra = formarPalabra;
+    }
+    const orden = JSON.parse(cont.dataset.orden);
+    orden.forEach((ch, posBaraja) => {
+      const b = document.createElement("button");
+      b.className = "letra-pieza";
+      b.style.background = colorDe(posBaraja + 2);
+      b.textContent = ch;
+      b.onclick = () => intentarLetra(ch, b);
+      cont.appendChild(b);
+    });
+  }
+
+  function intentarLetra(ch, boton) {
+    const esperada = formarPalabra[formarProgreso];
+    if (ch === esperada) {
+      formarProgreso++;
+      boton.classList.add("usada");
+      hablar(ch, idioma);
+      const slots = document.querySelectorAll("#formar-objetivo .slot");
+      for (let i = 0; i < formarProgreso; i++) {
+        slots[i].classList.add("lleno");
+        slots[i].textContent = formarPalabra[i];
+      }
+      if (formarProgreso === formarPalabra.length) {
+        const msg = document.getElementById("formar-mensaje");
+        estrellas++;
+        guardarEstrellas();
+        msg.textContent = (idioma === "es" ? "¡Muy bien! " : "Great job! ") + "⭐🎉";
+        document.getElementById("formar-emoji").classList.add("festejando");
+        lluviaEstrellas();
+        setTimeout(() => hablar(formarPalabra, idioma), 300);
+        setTimeout(() => document.getElementById("formar-emoji").classList.remove("festejando"), 1100);
+      }
+    } else {
+      const msg = document.getElementById("formar-mensaje");
+      msg.textContent = "🤔";
+      setTimeout(() => { if (msg.textContent === "🤔") msg.textContent = ""; }, 600);
+    }
+  }
+
+  // Pequeña lluvia de estrellas como premio
+  function lluviaEstrellas() {
+    const cont = document.getElementById("vista-formar");
+    for (let i = 0; i < 12; i++) {
+      const s = document.createElement("div");
+      s.textContent = ["⭐","🌟","✨"][i % 3];
+      s.className = "estrella-cae";
+      s.style.left = (Math.random() * 90 + 5) + "%";
+      s.style.fontSize = (Math.random() * 16 + 18) + "px";
+      s.style.animationDelay = (Math.random() * 0.3) + "s";
+      cont.appendChild(s);
+      setTimeout(() => s.remove(), 1600);
+    }
+  }
+
+  function reiniciarFormar() {
+    formarProgreso = 0;
+    document.getElementById("formar-mensaje").textContent = "";
+    document.getElementById("formar-emoji").textContent = palabrasFiltradas()[palabraIndex].emoji;
+    const cont = document.getElementById("formar-letras");
+    delete cont.dataset.orden;
+    renderFormar();
+  }
+
+  function otraPalabraFormar() {
+    const lista = palabrasFiltradas();
+    palabraIndex = (palabraIndex + 1) % lista.length;
+    iniciarFormar();
+  }
+
+  // Inicialización
+  actualizarContadorEstrellas();
+  document.getElementById("estrellas-badge").style.display = "none";
+  render();
+</script>
+</body>
+</html>

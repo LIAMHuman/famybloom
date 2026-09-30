@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.famybloom.app",
+    "sha256_cert_fingerprints": [
+      "69:8D:FC:80:70:8F:12:19:73:81:EE:D5:92:ED:48:AD:81:58:FD:E3:A7:D5:42:FD:D9:ED:3A:F8:7D:5F:15:DE"
+    ]
+  }
+}]

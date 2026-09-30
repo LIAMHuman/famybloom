@@ -1,24 +1,65 @@
 {
-  "name": "Familia Rodríguez",
-  "short_name": "Familia Rodríguez",
-  "description": "App de motivación y seguimiento para niños",
+  "name": "FamyBloom",
+  "short_name": "FamyBloom",
+  "description": "Motiva a tus hijos con deberes, puntos y recompensas. La familia que florece junta.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#FFF9F0",
-  "theme_color": "#667eea",
+  "background_color": "#F5F0FF",
+  "theme_color": "#7c3aed",
   "orientation": "portrait",
+  "lang": "es",
+  "categories": ["education", "family", "kids"],
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "FamyBloom - Inicio"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Deberes de hoy",
+      "short_name": "Deberes",
+      "description": "Ver los deberes del día",
+      "url": "/?page=deberes",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Premios",
+      "short_name": "Premios",
+      "description": "Ver premios disponibles",
+      "url": "/?page=recompensas",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }
